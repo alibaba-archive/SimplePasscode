@@ -11,6 +11,7 @@
 		D460923E1CDD8AFD006C96E5 /* SimplePasscode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46092331CDD8AFC006C96E5 /* SimplePasscode.framework */; };
 		D46092431CDD8AFD006C96E5 /* SimplePasscodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46092421CDD8AFD006C96E5 /* SimplePasscodeTests.swift */; };
 		D460924F1CDD8EAB006C96E5 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D460924E1CDD8EAB006C96E5 /* SnapKit.framework */; };
+		D4BD7C521CDDF38A0021825D /* UIView+Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BD7C511CDDF38A0021825D /* UIView+Shake.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		D46092421CDD8AFD006C96E5 /* SimplePasscodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePasscodeTests.swift; sourceTree = "<group>"; };
 		D46092441CDD8AFD006C96E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D460924E1CDD8EAB006C96E5 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		D4BD7C511CDDF38A0021825D /* UIView+Shake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Shake.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,7 @@
 			children = (
 				D460924E1CDD8EAB006C96E5 /* SnapKit.framework */,
 				D46092351CDD8AFD006C96E5 /* SimplePasscode */,
-				D460924D1CDD8B2F006C96E5 /* Source */,
+				D4BD7C501CDDF37F0021825D /* Source */,
 				D46092411CDD8AFD006C96E5 /* SimplePasscodeTests */,
 				D46092341CDD8AFC006C96E5 /* Products */,
 			);
@@ -91,9 +93,10 @@
 			path = SimplePasscodeTests;
 			sourceTree = "<group>";
 		};
-		D460924D1CDD8B2F006C96E5 /* Source */ = {
+		D4BD7C501CDDF37F0021825D /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				D4BD7C511CDDF38A0021825D /* UIView+Shake.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4BD7C521CDDF38A0021825D /* UIView+Shake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +326,7 @@
 		D46092481CDD8AFD006C96E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -337,12 +342,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dia.SimplePasscode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		D46092491CDD8AFD006C96E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -400,6 +407,7 @@
 				D46092491CDD8AFD006C96E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D460924A1CDD8AFD006C96E5 /* Build configuration list for PBXNativeTarget "SimplePasscodeTests" */ = {
 			isa = XCConfigurationList;
@@ -408,6 +416,7 @@
 				D460924C1CDD8AFD006C96E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
