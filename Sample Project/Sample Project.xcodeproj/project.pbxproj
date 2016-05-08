@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D4B097DA1CDE0DBD001AC22F /* SimplePasscode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B097D91CDE0DBD001AC22F /* SimplePasscode.framework */; };
+		D4B097DB1CDE0DBD001AC22F /* SimplePasscode.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4B097D91CDE0DBD001AC22F /* SimplePasscode.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D4B097FC1CDF4385001AC22F /* SwiftDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B097FB1CDF4385001AC22F /* SwiftDate.framework */; };
 		D4BD7C601CDDF3C60021825D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BD7C5F1CDDF3C60021825D /* AppDelegate.swift */; };
 		D4BD7C621CDDF3C60021825D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BD7C611CDDF3C60021825D /* ViewController.swift */; };
 		D4BD7C651CDDF3C60021825D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4BD7C631CDDF3C60021825D /* Main.storyboard */; };
@@ -14,7 +17,6 @@
 		D4BD7C6A1CDDF3C60021825D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4BD7C681CDDF3C60021825D /* LaunchScreen.storyboard */; };
 		D4BD7C751CDDF3C60021825D /* Sample_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BD7C741CDDF3C60021825D /* Sample_ProjectTests.swift */; };
 		D4BD7C801CDDF3C60021825D /* Sample_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BD7C7F1CDDF3C60021825D /* Sample_ProjectUITests.swift */; };
-		D4BD7C8E1CDDF3D50021825D /* SimplePasscode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4BD7C8D1CDDF3D50021825D /* SimplePasscode.framework */; };
 		D4BD7C911CDDF5670021825D /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4BD7C8F1CDDF4F80021825D /* SnapKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,7 +37,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D4B097DC1CDE0DBD001AC22F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D4B097DB1CDE0DBD001AC22F /* SimplePasscode.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		D4B097D91CDE0DBD001AC22F /* SimplePasscode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = SimplePasscode.framework; path = "/Users/zetasq/Library/Developer/Xcode/DerivedData/SimplePasscode-adaqccihwnhmilgckhnbprwzfaja/Build/Products/Debug-iphoneos/SimplePasscode.framework"; sourceTree = "<absolute>"; };
+		D4B097FB1CDF4385001AC22F /* SwiftDate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftDate.framework; path = ../Carthage/Build/iOS/SwiftDate.framework; sourceTree = "<group>"; };
 		D4BD7C5C1CDDF3C60021825D /* Sample Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4BD7C5F1CDDF3C60021825D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4BD7C611CDDF3C60021825D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,7 +67,6 @@
 		D4BD7C7B1CDDF3C60021825D /* Sample ProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sample ProjectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4BD7C7F1CDDF3C60021825D /* Sample_ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample_ProjectUITests.swift; sourceTree = "<group>"; };
 		D4BD7C811CDDF3C60021825D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D4BD7C8D1CDDF3D50021825D /* SimplePasscode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimplePasscode.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SimplePasscode-bbghdevkxbtnqsevxibjcpcollko/Build/Products/Debug-iphonesimulator/SimplePasscode.framework"; sourceTree = "<group>"; };
 		D4BD7C8F1CDDF4F80021825D /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = ../Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,8 +75,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4B097FC1CDF4385001AC22F /* SwiftDate.framework in Frameworks */,
+				D4B097DA1CDE0DBD001AC22F /* SimplePasscode.framework in Frameworks */,
 				D4BD7C911CDDF5670021825D /* SnapKit.framework in Frameworks */,
-				D4BD7C8E1CDDF3D50021825D /* SimplePasscode.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,8 +101,9 @@
 		D4BD7C531CDDF3C60021825D = {
 			isa = PBXGroup;
 			children = (
+				D4B097FB1CDF4385001AC22F /* SwiftDate.framework */,
+				D4B097D91CDE0DBD001AC22F /* SimplePasscode.framework */,
 				D4BD7C8F1CDDF4F80021825D /* SnapKit.framework */,
-				D4BD7C8D1CDDF3D50021825D /* SimplePasscode.framework */,
 				D4BD7C5E1CDDF3C60021825D /* Sample Project */,
 				D4BD7C731CDDF3C60021825D /* Sample ProjectTests */,
 				D4BD7C7E1CDDF3C60021825D /* Sample ProjectUITests */,
@@ -144,6 +163,7 @@
 				D4BD7C591CDDF3C60021825D /* Frameworks */,
 				D4BD7C5A1CDDF3C60021825D /* Resources */,
 				D4BD7C921CDDF82F0021825D /* ShellScript */,
+				D4B097DC1CDE0DBD001AC22F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -202,6 +222,7 @@
 				TargetAttributes = {
 					D4BD7C5B1CDDF3C60021825D = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = DHNJ8N28ZZ;
 					};
 					D4BD7C6F1CDDF3C60021825D = {
 						CreatedOnToolsVersion = 7.3;
@@ -268,6 +289,7 @@
 			);
 			inputPaths = (
 				"$(PROJECT_DIR)/../Carthage/Build/iOS/SnapKit.framework",
+				"$(PROJECT_DIR)/../Carthage/Build/iOS/SwiftDate.framework",
 			);
 			outputPaths = (
 			);
@@ -427,11 +449,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/iOS";
 				INFOPLIST_FILE = "Sample Project/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "dia.Sample-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -439,11 +466,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/iOS";
 				INFOPLIST_FILE = "Sample Project/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "dia.Sample-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -512,6 +544,7 @@
 				D4BD7C861CDDF3C60021825D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D4BD7C871CDDF3C60021825D /* Build configuration list for PBXNativeTarget "Sample ProjectTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +553,7 @@
 				D4BD7C891CDDF3C60021825D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D4BD7C8A1CDDF3C60021825D /* Build configuration list for PBXNativeTarget "Sample ProjectUITests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +562,7 @@
 				D4BD7C8C1CDDF3C60021825D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

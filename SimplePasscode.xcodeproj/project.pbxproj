@@ -11,6 +11,19 @@
 		D460923E1CDD8AFD006C96E5 /* SimplePasscode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46092331CDD8AFC006C96E5 /* SimplePasscode.framework */; };
 		D46092431CDD8AFD006C96E5 /* SimplePasscodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46092421CDD8AFD006C96E5 /* SimplePasscodeTests.swift */; };
 		D460924F1CDD8EAB006C96E5 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D460924E1CDD8EAB006C96E5 /* SnapKit.framework */; };
+		D4B097E41CDE2C05001AC22F /* API Entries.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B097E31CDE2C05001AC22F /* API Entries.swift */; };
+		D4B097E61CDED813001AC22F /* PasscodeCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B097E51CDED813001AC22F /* PasscodeCreationViewController.swift */; };
+		D4B097E81CDED843001AC22F /* PasscodeChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B097E71CDED843001AC22F /* PasscodeChangeViewController.swift */; };
+		D4B097EA1CDED873001AC22F /* PasscodeDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B097E91CDED873001AC22F /* PasscodeDeletionViewController.swift */; };
+		D4B097EC1CDED88F001AC22F /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B097EB1CDED88F001AC22F /* AuthenticationViewController.swift */; };
+		D4B097EE1CDEDAEA001AC22F /* PasscodeField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B097ED1CDEDAEA001AC22F /* PasscodeField.swift */; };
+		D4B097F01CDF16B0001AC22F /* PasscodeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B097EF1CDF16B0001AC22F /* PasscodeInputView.swift */; };
+		D4B097F21CDF1A4B001AC22F /* TouchIDInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B097F11CDF1A4B001AC22F /* TouchIDInputView.swift */; };
+		D4B097F41CDF3526001AC22F /* LockscreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B097F31CDF3526001AC22F /* LockscreenManager.swift */; };
+		D4B097F61CDF3694001AC22F /* ShiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B097F51CDF3694001AC22F /* ShiftView.swift */; };
+		D4B097F81CDF41FA001AC22F /* FreezeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B097F71CDF41FA001AC22F /* FreezeManager.swift */; };
+		D4B097FA1CDF436B001AC22F /* SwiftDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B097F91CDF436B001AC22F /* SwiftDate.framework */; };
+		D4B097FE1CDF4FB4001AC22F /* NSDate+Comparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B097FD1CDF4FB4001AC22F /* NSDate+Comparison.swift */; };
 		D4BD7C521CDDF38A0021825D /* UIView+Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BD7C511CDDF38A0021825D /* UIView+Shake.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +45,19 @@
 		D46092421CDD8AFD006C96E5 /* SimplePasscodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePasscodeTests.swift; sourceTree = "<group>"; };
 		D46092441CDD8AFD006C96E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D460924E1CDD8EAB006C96E5 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		D4B097E31CDE2C05001AC22F /* API Entries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "API Entries.swift"; sourceTree = "<group>"; };
+		D4B097E51CDED813001AC22F /* PasscodeCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasscodeCreationViewController.swift; sourceTree = "<group>"; };
+		D4B097E71CDED843001AC22F /* PasscodeChangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasscodeChangeViewController.swift; sourceTree = "<group>"; };
+		D4B097E91CDED873001AC22F /* PasscodeDeletionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasscodeDeletionViewController.swift; sourceTree = "<group>"; };
+		D4B097EB1CDED88F001AC22F /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		D4B097ED1CDEDAEA001AC22F /* PasscodeField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasscodeField.swift; sourceTree = "<group>"; };
+		D4B097EF1CDF16B0001AC22F /* PasscodeInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasscodeInputView.swift; sourceTree = "<group>"; };
+		D4B097F11CDF1A4B001AC22F /* TouchIDInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchIDInputView.swift; sourceTree = "<group>"; };
+		D4B097F31CDF3526001AC22F /* LockscreenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockscreenManager.swift; sourceTree = "<group>"; };
+		D4B097F51CDF3694001AC22F /* ShiftView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftView.swift; sourceTree = "<group>"; };
+		D4B097F71CDF41FA001AC22F /* FreezeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreezeManager.swift; sourceTree = "<group>"; };
+		D4B097F91CDF436B001AC22F /* SwiftDate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftDate.framework; path = Carthage/Build/iOS/SwiftDate.framework; sourceTree = "<group>"; };
+		D4B097FD1CDF4FB4001AC22F /* NSDate+Comparison.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Comparison.swift"; sourceTree = "<group>"; };
 		D4BD7C511CDDF38A0021825D /* UIView+Shake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Shake.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -40,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4B097FA1CDF436B001AC22F /* SwiftDate.framework in Frameworks */,
 				D460924F1CDD8EAB006C96E5 /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,6 +85,7 @@
 		D46092291CDD8AFC006C96E5 = {
 			isa = PBXGroup;
 			children = (
+				D4B097F91CDF436B001AC22F /* SwiftDate.framework */,
 				D460924E1CDD8EAB006C96E5 /* SnapKit.framework */,
 				D46092351CDD8AFD006C96E5 /* SimplePasscode */,
 				D4BD7C501CDDF37F0021825D /* Source */,
@@ -96,7 +124,19 @@
 		D4BD7C501CDDF37F0021825D /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				D4B097E31CDE2C05001AC22F /* API Entries.swift */,
+				D4B097F71CDF41FA001AC22F /* FreezeManager.swift */,
+				D4B097FD1CDF4FB4001AC22F /* NSDate+Comparison.swift */,
 				D4BD7C511CDDF38A0021825D /* UIView+Shake.swift */,
+				D4B097ED1CDEDAEA001AC22F /* PasscodeField.swift */,
+				D4B097EF1CDF16B0001AC22F /* PasscodeInputView.swift */,
+				D4B097F11CDF1A4B001AC22F /* TouchIDInputView.swift */,
+				D4B097F51CDF3694001AC22F /* ShiftView.swift */,
+				D4B097E51CDED813001AC22F /* PasscodeCreationViewController.swift */,
+				D4B097E71CDED843001AC22F /* PasscodeChangeViewController.swift */,
+				D4B097E91CDED873001AC22F /* PasscodeDeletionViewController.swift */,
+				D4B097EB1CDED88F001AC22F /* AuthenticationViewController.swift */,
+				D4B097F31CDF3526001AC22F /* LockscreenManager.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -209,7 +249,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4B097E81CDED843001AC22F /* PasscodeChangeViewController.swift in Sources */,
+				D4B097E61CDED813001AC22F /* PasscodeCreationViewController.swift in Sources */,
+				D4B097EE1CDEDAEA001AC22F /* PasscodeField.swift in Sources */,
+				D4B097FE1CDF4FB4001AC22F /* NSDate+Comparison.swift in Sources */,
 				D4BD7C521CDDF38A0021825D /* UIView+Shake.swift in Sources */,
+				D4B097EA1CDED873001AC22F /* PasscodeDeletionViewController.swift in Sources */,
+				D4B097F61CDF3694001AC22F /* ShiftView.swift in Sources */,
+				D4B097EC1CDED88F001AC22F /* AuthenticationViewController.swift in Sources */,
+				D4B097F21CDF1A4B001AC22F /* TouchIDInputView.swift in Sources */,
+				D4B097F81CDF41FA001AC22F /* FreezeManager.swift in Sources */,
+				D4B097E41CDE2C05001AC22F /* API Entries.swift in Sources */,
+				D4B097F41CDF3526001AC22F /* LockscreenManager.swift in Sources */,
+				D4B097F01CDF16B0001AC22F /* PasscodeInputView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -25,8 +26,12 @@ class ViewController: UIViewController {
 
 
     @IBAction func buttonTapped(sender: AnyObject) {
-        label.shake(needsVibration: true) {
-            print("Shake completed")
+        SimplePasscode.createNewPasscode(presentingViewController: self) { (newPasscode) in
+            if let newPasscode = newPasscode {
+                self.label.text = newPasscode
+            } else {
+                self.label.text = "Passcode canceled"
+            }
         }
     }
 }

@@ -7,16 +7,21 @@
 //
 
 import UIKit
+import AudioToolbox
 
-public extension UIView {
+extension UIView {
     func shake(needsVibration needsVibration: Bool, completion: () -> Void) {
-        UIView.animateKeyframesWithDuration(0.5, delay: 0, options: [], animations: {
-            let horizOffsets: [CGFloat] = [0, 10, -8, 8, -5, 5, 0]
-            let frameDuration = 1.0 / Double(horizOffsets.count)
+        if needsVibration {
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+        }
+        
+        UIView.animateKeyframesWithDuration(0.3, delay: 0, options: [], animations: {
+            let xOffsets: [CGFloat] = [0, 10, -8, 8, -5, 5, 0]
+            let frameDuration = 1.0 / Double(xOffsets.count)
             
-            for i in 0..<horizOffsets.count {
+            for i in 0..<xOffsets.count {
                 UIView.addKeyframeWithRelativeStartTime(Double(i) * frameDuration, relativeDuration: frameDuration, animations: {
-                    self.transform = CGAffineTransformMakeTranslation(horizOffsets[i], 0)
+                    self.transform = CGAffineTransformMakeTranslation(xOffsets[i], 0)
                 })
             }
         }) { finished in
