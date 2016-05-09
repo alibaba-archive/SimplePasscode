@@ -15,8 +15,8 @@ extension UIView {
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
         }
         
-        UIView.animateKeyframesWithDuration(0.3, delay: 0, options: [], animations: {
-            let xOffsets: [CGFloat] = [0, 10, -8, 8, -5, 5, 0]
+        UIView.animateKeyframesWithDuration(0.5, delay: 0, options: [], animations: {
+            let xOffsets: [CGFloat] = [0, 25, -20, 15, -10, 5, 0]
             let frameDuration = 1.0 / Double(xOffsets.count)
             
             for i in 0..<xOffsets.count {

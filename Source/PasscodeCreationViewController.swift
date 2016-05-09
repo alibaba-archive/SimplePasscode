@@ -71,8 +71,7 @@ class PasscodeCreationViewController: UIViewController {
     // MARK: - UI Config
     private func setupUI() {
         title = "New Passcode"
-        
-        view.backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1)
+        view.backgroundColor = UIColor.backgroundColor
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: #selector(self.cancelButtonTapped))
         

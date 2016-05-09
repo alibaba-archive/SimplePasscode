@@ -75,8 +75,7 @@ class PasscodeChangeViewController: UIViewController {
     // MARK: - UI Config
     private func setupUI() {
         title = "Change Passcode"
-        
-        view.backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1)
+        view.backgroundColor = UIColor.backgroundColor
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: #selector(self.cancelButtonTapped))
         
@@ -167,6 +166,7 @@ class PasscodeChangeViewController: UIViewController {
 
 }
 
+// MARK: - PasscodeInputView Delegate
 extension PasscodeChangeViewController: PasscodeInputViewDelegate {
     func passcodeInputView(inputView: PasscodeInputView, didFinishWithPasscode passcode: String) {
         if inputView == shiftView.managedSubViews[0] {

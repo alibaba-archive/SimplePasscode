@@ -68,7 +68,14 @@ public func changePasscode(presentingViewController presentingViewController: UI
 }
 
 public func deletePasscode(presentingViewController presentingViewController: UIViewController, currentPasscode: String, completion: (success: Bool) -> Void) {
+    let passcodeDeletionViewController = PasscodeDeletionViewController()
+    passcodeDeletionViewController.currentPasscode = currentPasscode
+    passcodeDeletionViewController.completionHandler = completion
     
+    let navigationController = UINavigationController(rootViewController: passcodeDeletionViewController)
+    navigationController.modalPresentationStyle = .CurrentContext
+    
+    presentingViewController.presentViewController(navigationController, animated: true, completion: nil)
 }
 
 public func clearState() {
