@@ -25,7 +25,7 @@ class FreezeManager {
         var duration: Int
         let now = NSDate()
         
-        if (currentEndTimeStamp ?? NSDate(timeIntervalSince1970: 0)) > now {
+        if currentPasscodeFailures > maxPasscodeFailures {
             duration = secondFreezeTime
         } else {
             duration = firstFreezeTime
@@ -46,22 +46,20 @@ class FreezeManager {
     
         /// Measured in minutes
     static var timeUntilUnfreezed: Int {
-        let diff = (currentEndTimeStamp ?? NSDate(timeIntervalSince1970: 0)) - NSDate()
-        
-        return diff.minute
+        return NSDate().minutesUntil(currentEndTimeStamp ?? NSDate(timeIntervalSince1970: 0))
     }
     
     // MARK: - TouchID
     static func incrementTouchIDFailure(@noescape completion: (reachThreshold: Bool) -> Void) {
         currentTouchIDFailures += 1
         
-        completion(reachThreshold: currentTouchIDFailures == maxTouchIDFailures)
+        completion(reachThreshold: currentTouchIDFailures >= maxTouchIDFailures)
     }
     
     // MARK: - Passcode
     static func incrementPasscodeFailure(@noescape completion: (reachThreshold: Bool) -> Void) {
         currentPasscodeFailures += 1
         
-        completion(reachThreshold: currentPasscodeFailures == maxPasscodeFailures)
+        completion(reachThreshold: currentPasscodeFailures >= maxPasscodeFailures)
     }
 }

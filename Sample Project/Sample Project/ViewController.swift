@@ -26,11 +26,11 @@ class ViewController: UIViewController {
 
 
     @IBAction func buttonTapped(sender: AnyObject) {
-        SimplePasscode.createNewPasscode(presentingViewController: self) { (newPasscode) in
+        SimplePasscode.changePasscode(presentingViewController: self, currentPasscode: "1111") { (newPasscode) in
             if let newPasscode = newPasscode {
-                self.label.text = newPasscode
+                self.label.text = "\(newPasscode)"
             } else {
-                self.label.text = "Passcode canceled"
+                self.label.text = "Not set"
             }
         }
     }

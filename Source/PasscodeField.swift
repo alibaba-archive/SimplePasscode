@@ -84,7 +84,7 @@ class PasscodeField: UIControl {
     
     // MARK: - UIResponder
     override func canBecomeFirstResponder() -> Bool {
-        return true
+        return self.enabled
     }
     
     // MARK: - Action Handlers

@@ -15,7 +15,7 @@ class PasscodeCreationViewController: UIViewController {
         case Confirm
     }
     
-    // MARK: Private Properties
+    // MARK: - Private Properties
     private var stage: CreationStage = .First
     private var firstPasscode: String?
     private var secondPasscode: String?
@@ -27,7 +27,8 @@ class PasscodeCreationViewController: UIViewController {
         let secondInputView = PasscodeInputView()
         secondInputView.delegate = self
         
-        let shiftView = ShiftView(firstView: firstInputView, secondView: secondInputView)
+        let viewArray = [firstInputView, secondInputView]
+        let shiftView = ShiftView(managedSubViews: viewArray)
         
         return shiftView
     }()
@@ -85,27 +86,28 @@ class PasscodeCreationViewController: UIViewController {
     }
     
     private func updateInputView() {
-        shiftView.currentView.enabled = !FreezeManager.freezed
+        let freezed = FreezeManager.freezed
+        shiftView.currentView.enabled = !freezed
         
-        if FreezeManager.freezed {
-            shiftView.currentView.title = "Try again in \(FreezeManager.timeUntilUnfreezed) minute\(FreezeManager.timeUntilUnfreezed > 1 ? "s" : "")"
+        if freezed {
+            let timeUntilUnfreezed = FreezeManager.timeUntilUnfreezed
+            shiftView.currentView.title = "Try again in \(timeUntilUnfreezed) minute\(timeUntilUnfreezed > 1 ? "s" : "")"
             
             shiftView.currentView.error = "\(FreezeManager.currentPasscodeFailures) Failed Passcode Attempts"
         } else {
-            shiftView.firstView.title = "Enter a passcode"
+            shiftView.managedSubViews.first!.title = "Enter a passcode"
             
             if let _ = secondPasscode {
-                shiftView.firstView.message = "Passcode did not match.\nTry again"
+                shiftView.managedSubViews.first!.message = "Passcode did not match.\nTry again"
             }
-            
-            shiftView.secondView.title = "Re-enter your passcode"
+            shiftView.managedSubViews.last!.title = "Re-enter your passcode"
         }
     }
     
     // MARK: - Action Handlers
     func cancelButtonTapped() {
         completionHandler?(newPasscode: nil)
-
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -115,9 +117,16 @@ class PasscodeCreationViewController: UIViewController {
             return
         }
         
-        guard let keyboardHeight = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue().height else {
+        guard let keyboardFrameInScreen = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue() else {
             return
         }
+        
+        guard let keyboardFrameInWindow = view.window?.convertRect(keyboardFrameInScreen, fromWindow: nil) else {
+            return
+        }
+        
+        let keyboardFrameInView = view.convertRect(keyboardFrameInWindow, fromView: nil)
+        let bottomOffset = max(view.bounds.height - keyboardFrameInView.origin.y, 0)
         
         guard let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue else {
             return
@@ -132,7 +141,7 @@ class PasscodeCreationViewController: UIViewController {
                 make.top.equalTo(self.view).offset(64)
                 make.left.equalTo(self.view)
                 make.right.equalTo(self.view)
-                make.bottom.equalTo(self.view).offset(-keyboardHeight)
+                make.bottom.equalTo(self.view).offset(-bottomOffset)
             }
             
             self.view.layoutIfNeeded()
@@ -140,34 +149,29 @@ class PasscodeCreationViewController: UIViewController {
     }
 }
 
+// MARK: - PasscodeInputView Delegate
 extension PasscodeCreationViewController: PasscodeInputViewDelegate {
     func passcodeInputView(inputView: PasscodeInputView, didFinishWithPasscode passcode: String) {
-        if inputView == shiftView.firstView {
+        if inputView == shiftView.managedSubViews.first {
             firstPasscode = passcode
-            shiftView.secondView.passcode = ""
-            shiftView.secondView.becomeFirstResponder()
+            shiftView.managedSubViews.last!.passcode = ""
+            shiftView.managedSubViews.last!.becomeFirstResponder()
             
             shiftView.shift(.Forward)
-            
-            return
-        }
-        
-        if inputView == shiftView.secondView {
+        } else {
             secondPasscode = passcode
             
             if secondPasscode != firstPasscode {
-                shiftView.firstView.passcode = ""
+                shiftView.managedSubViews.first!.passcode = ""
                 updateInputView()
-                shiftView.firstView.becomeFirstResponder()
+                shiftView.managedSubViews.first!.becomeFirstResponder()
                 
                 shiftView.shift(.Backward)
             } else {
                 completionHandler?(newPasscode: passcode)
-
+                
                 dismissViewControllerAnimated(true, completion: nil)
             }
-            
-            return
         }
     }
 }

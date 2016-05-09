@@ -10,7 +10,7 @@ import UIKit
 import AudioToolbox
 
 extension UIView {
-    func shake(needsVibration needsVibration: Bool, completion: () -> Void) {
+    func shake(needsVibration needsVibration: Bool, completion: (() -> Void)?) {
         if needsVibration {
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
         }
@@ -26,7 +26,7 @@ extension UIView {
             }
         }) { finished in
             if finished {
-                completion()
+                completion?()
             }
         }
     }

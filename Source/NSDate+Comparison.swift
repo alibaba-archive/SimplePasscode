@@ -8,8 +8,12 @@
 
 import Foundation
 
-func -(lhs: NSDate, rhs: NSDate) -> NSDateComponents {
-    let calendar = NSCalendar.currentCalendar()
-    
-    return calendar.components([.Day, .Hour, .Minute, .Second], fromDate: rhs, toDate: lhs, options: [])
+extension NSDate {
+    func minutesUntil(targetDate: NSDate) -> Int {
+        let calendar = NSCalendar.currentCalendar()
+        
+        let diff = calendar.components([.Minute, .Second], fromDate: self, toDate: targetDate, options: [])
+        
+        return diff.second > 0 ? diff.minute + 1 : diff.minute
+    }
 }

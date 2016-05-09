@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D42987991CE027BC00D6BE4E /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42987981CE027BC00D6BE4E /* PaddingLabel.swift */; };
 		D46092371CDD8AFD006C96E5 /* SimplePasscode.h in Headers */ = {isa = PBXBuildFile; fileRef = D46092361CDD8AFD006C96E5 /* SimplePasscode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D460923E1CDD8AFD006C96E5 /* SimplePasscode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46092331CDD8AFC006C96E5 /* SimplePasscode.framework */; };
 		D46092431CDD8AFD006C96E5 /* SimplePasscodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46092421CDD8AFD006C96E5 /* SimplePasscodeTests.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D42987981CE027BC00D6BE4E /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		D46092331CDD8AFC006C96E5 /* SimplePasscode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimplePasscode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46092361CDD8AFD006C96E5 /* SimplePasscode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimplePasscode.h; sourceTree = "<group>"; };
 		D46092381CDD8AFD006C96E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,6 +84,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D42987971CE01FE400D6BE4E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D4B097FD1CDF4FB4001AC22F /* NSDate+Comparison.swift */,
+				D4BD7C511CDDF38A0021825D /* UIView+Shake.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		D46092291CDD8AFC006C96E5 = {
 			isa = PBXGroup;
 			children = (
@@ -124,11 +135,11 @@
 		D4BD7C501CDDF37F0021825D /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				D42987971CE01FE400D6BE4E /* Extensions */,
 				D4B097E31CDE2C05001AC22F /* API Entries.swift */,
 				D4B097F71CDF41FA001AC22F /* FreezeManager.swift */,
-				D4B097FD1CDF4FB4001AC22F /* NSDate+Comparison.swift */,
-				D4BD7C511CDDF38A0021825D /* UIView+Shake.swift */,
 				D4B097ED1CDEDAEA001AC22F /* PasscodeField.swift */,
+				D42987981CE027BC00D6BE4E /* PaddingLabel.swift */,
 				D4B097EF1CDF16B0001AC22F /* PasscodeInputView.swift */,
 				D4B097F11CDF1A4B001AC22F /* TouchIDInputView.swift */,
 				D4B097F51CDF3694001AC22F /* ShiftView.swift */,
@@ -257,6 +268,7 @@
 				D4B097EA1CDED873001AC22F /* PasscodeDeletionViewController.swift in Sources */,
 				D4B097F61CDF3694001AC22F /* ShiftView.swift in Sources */,
 				D4B097EC1CDED88F001AC22F /* AuthenticationViewController.swift in Sources */,
+				D42987991CE027BC00D6BE4E /* PaddingLabel.swift in Sources */,
 				D4B097F21CDF1A4B001AC22F /* TouchIDInputView.swift in Sources */,
 				D4B097F81CDF41FA001AC22F /* FreezeManager.swift in Sources */,
 				D4B097E41CDE2C05001AC22F /* API Entries.swift in Sources */,

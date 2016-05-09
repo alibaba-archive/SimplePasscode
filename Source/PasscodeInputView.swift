@@ -16,7 +16,7 @@ import SnapKit
 class PasscodeInputView: UIView {
     // MARK: - Private Properties
     private let passcodeLength = 4
-
+    
     private(set) lazy var passcodeField: PasscodeField! = {
         let passcodeField = PasscodeField(length: self.passcodeLength, frame: .zero)
         
@@ -48,8 +48,8 @@ class PasscodeInputView: UIView {
         return messageLabel
     }()
     
-    private lazy var errorLabel: UILabel! = {
-        let errorLabel = UILabel()
+    private lazy var errorLabel: PaddingLabel! = {
+        let errorLabel = PaddingLabel(padding: UIEdgeInsets(top: 2, left: 10, bottom: 2, right: 10))
         
         errorLabel.font = UIFont.systemFontOfSize(15)
         errorLabel.textColor = UIColor.whiteColor()
@@ -68,7 +68,11 @@ class PasscodeInputView: UIView {
     
     // MARK: - Public Properties
     weak var delegate: PasscodeInputViewDelegate?
-    var enabled = true
+    var enabled = true {
+        didSet {
+            passcodeField.enabled = enabled
+        }
+    }
     
     var passcode: String {
         get {
@@ -136,26 +140,28 @@ class PasscodeInputView: UIView {
     
     // MARK: - Autolayout
     override func updateConstraints() {
-        // TODO:
         passcodeField.snp_remakeConstraints { make in
             make.center.equalTo(self)
         }
         
         titleLabel.snp_remakeConstraints { make in
-            make.left.equalTo(self).offset(15)
-            make.right.equalTo(self).offset(-15)
+            make.left.greaterThanOrEqualTo(self).offset(15)
+            make.right.lessThanOrEqualTo(self).offset(-15)
+            make.centerX.equalTo(self)
             make.bottom.equalTo(passcodeField.snp_top).offset(-30)
         }
         
         messageLabel.snp_remakeConstraints { make in
-            make.left.equalTo(titleLabel)
-            make.right.equalTo(titleLabel)
+            make.left.greaterThanOrEqualTo(self).offset(15)
+            make.right.lessThanOrEqualTo(self).offset(-15)
+            make.centerX.equalTo(self)
             make.top.equalTo(passcodeField.snp_bottom).offset(30)
         }
         
         errorLabel.snp_remakeConstraints { make in
-            make.left.equalTo(titleLabel)
-            make.right.equalTo(titleLabel)
+            make.left.greaterThanOrEqualTo(self).offset(15)
+            make.right.lessThanOrEqualTo(self).offset(-15)
+            make.centerX.equalTo(self)
             make.top.equalTo(passcodeField.snp_bottom).offset(30)
         }
         
@@ -177,7 +183,7 @@ class PasscodeInputView: UIView {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesBegan(touches, withEvent: event)
-
+        
         passcodeField.becomeFirstResponder()
     }
     
