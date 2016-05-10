@@ -110,6 +110,6 @@ public class NumPadView: UIView {
     
     // MARK: - Action Handlers
     func digitButtonTapped(digitButton: DigitButton) {
-        
+        delegate?.numPadView(self, didTapDigit: digitButton.digit)
     }
 }

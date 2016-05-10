@@ -44,12 +44,15 @@ class DigitButton: UIButton {
     override init(frame: CGRect) {
         fatalError("Call init(passcodeLength:) instead")
     }
-    required public init?(coder aDecoder: NSCoder) {
+    
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - UI Config
     private func setupUI() {
+        tintColor = UIColor.customTintColor
+        
         layer.cornerRadius = diameter / 2
         layer.borderWidth = 1
         layer.borderColor = tintColor.CGColor
@@ -80,7 +83,7 @@ class DigitButton: UIButton {
     }
     
     // MARK: - AutoLayout
-    override public func intrinsicContentSize() -> CGSize {
+    override func intrinsicContentSize() -> CGSize {
         return CGSize(width: diameter, height: diameter)
     }
     

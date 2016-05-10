@@ -21,10 +21,10 @@ class PasscodeCreationViewController: UIViewController {
     private var secondPasscode: String?
     
     private lazy var shiftView: ShiftView<PasscodeInputView>! = {
-        let firstInputView = PasscodeInputView()
+        let firstInputView = PasscodeInputView(passcodeLength: SimplePasscode.passcodeLength)
         firstInputView.delegate = self
         
-        let secondInputView = PasscodeInputView()
+        let secondInputView = PasscodeInputView(passcodeLength: SimplePasscode.passcodeLength)
         secondInputView.delegate = self
         
         let viewArray = [firstInputView, secondInputView]
@@ -167,6 +167,7 @@ extension PasscodeCreationViewController: PasscodeInputViewDelegate {
                 
                 shiftView.shift(.Backward)
             } else {
+                FreezeManager.clearState()
                 completionHandler?(newPasscode: passcode)
                 
                 dismissViewControllerAnimated(true, completion: nil)

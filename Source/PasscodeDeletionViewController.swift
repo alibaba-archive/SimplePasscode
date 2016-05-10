@@ -12,7 +12,7 @@ import SnapKit
 class PasscodeDeletionViewController: UIViewController {
     // MARK: - Private Properties
     private lazy var passcodeInputView: PasscodeInputView! = {
-        let inputView = PasscodeInputView()
+        let inputView = PasscodeInputView(passcodeLength: SimplePasscode.passcodeLength)
         inputView.delegate = self
         
         return inputView

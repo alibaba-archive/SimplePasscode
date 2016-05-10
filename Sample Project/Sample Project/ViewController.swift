@@ -18,29 +18,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        numPadView = NumPadView()
-        view.addSubview(numPadView)
-        
-        numPadView.snp_makeConstraints { (make) in
-            make.center.equalTo(view)
+    }
+
+    @IBAction func buttonTapped(sender: AnyObject) {
+        LockScreenManager.showLockScreen(passcode: "1111") { (authenticationSuccess) in
+            print(authenticationSuccess)
+            LockScreenManager.hideLockScreen()
         }
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
-//    @IBAction func buttonTapped(sender: AnyObject) {
-//        SimplePasscode.changePasscode(presentingViewController: self, currentPasscode: "1111") { (newPasscode) in
-//            if let newPasscode = newPasscode {
-//                self.label.text = newPasscode
-//            } else {
-//                self.label.text = "canceled"
-//            }
-//        }
-//    }
 }
 

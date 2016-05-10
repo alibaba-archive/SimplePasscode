@@ -11,7 +11,8 @@ import LocalAuthentication
 
 
 // MARK: - Passcode Options
-var allowTouchID = false
+var passcodeLength = 4
+var allowTouchID = true
 var maxTouchIDFailures = 3
 var maxPasscodeFailures = 6
 var firstFreezeTime = 60
@@ -27,7 +28,7 @@ var secondFreezeTime = 60 * 5
  - parameter firstFreezeTime: The first freeze time of passcode related function when user reached the maximum number of failures in unlocked state. The time duration is measured in seconds. During freeze time, user cannot create, change or delete passcode.
  - parameter secondFreezeTime: The second freeze time when user fails the authentication after the first freeze time passed. The time duration is measured in seconds. This duration should be longer than the first freeze time.
  */
-public func setup(allowTouchID allowTouchID: Bool = true, maxTouchIDFailures: Int = 3, maxPasscodeFailures: Int = 6, firstFreezeTime: Int = 60, secondFreezeTime: Int = 60 * 5) {
+public func setup(allowTouchID allowTouchID: Bool = true, passcodeLength: Int = 4, maxTouchIDFailures: Int = 3, maxPasscodeFailures: Int = 6, firstFreezeTime: Int = 60, secondFreezeTime: Int = 60 * 5) {
     if allowTouchID {
         let authenticationContext = LAContext()
         
@@ -40,6 +41,7 @@ public func setup(allowTouchID allowTouchID: Bool = true, maxTouchIDFailures: In
         SimplePasscode.allowTouchID = false
     }
     
+    SimplePasscode.passcodeLength = passcodeLength
     SimplePasscode.maxTouchIDFailures = maxTouchIDFailures
     SimplePasscode.maxPasscodeFailures = maxPasscodeFailures
     SimplePasscode.firstFreezeTime = firstFreezeTime
@@ -80,25 +82,4 @@ public func deletePasscode(presentingViewController presentingViewController: UI
 
 public func clearState() {
     FreezeManager.clearState()
-}
-
-public func authenticateIdentity(passcode: String, completion: (success: Bool) -> Void) {
-    
-}
-
-
-
-public func test() {
-    let authenticationContext = LAContext()
-    let authenticationReason = "Verify your identify to continue"
-    
-    if authenticationContext.canEvaluatePolicy(.DeviceOwnerAuthenticationWithBiometrics, error: nil) {
-        authenticationContext.evaluatePolicy(.DeviceOwnerAuthenticationWithBiometrics, localizedReason: authenticationReason, reply: { (success, error) in
-            if success {
-                print("Authenticated")
-            } else {
-                print("Faile to authenticate")
-            }
-        })
-    }
 }

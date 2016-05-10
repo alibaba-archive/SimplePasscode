@@ -15,7 +15,7 @@ import SnapKit
 
 class PasscodeInputView: UIView {
     // MARK: - Private Properties
-    private let passcodeLength = 4
+    let passcodeLength: Int
     
     private(set) lazy var passcodeField: PasscodeField! = {
         let passcodeField = PasscodeField(length: self.passcodeLength, frame: .zero)
@@ -118,16 +118,22 @@ class PasscodeInputView: UIView {
     }
     
     // MARK: - Initializers
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(passcodeLength: Int) {
+        precondition(passcodeLength > 0, "Passcode's length should be positive")
+        
+        self.passcodeLength = passcodeLength
+        
+        super.init(frame: .zero)
         
         setup()
     }
     
+    override init(frame: CGRect) {
+        fatalError("Call init(passcodeLength:) instead")
+    }
+    
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        setup()
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Common Initialization Logic
