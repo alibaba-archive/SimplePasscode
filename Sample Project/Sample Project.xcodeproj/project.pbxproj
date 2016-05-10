@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D429879B1CE06B9A00D6BE4E /* SimplePasscode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D429879A1CE06B9A00D6BE4E /* SimplePasscode.framework */; };
-		D429879C1CE06B9A00D6BE4E /* SimplePasscode.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D429879A1CE06B9A00D6BE4E /* SimplePasscode.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D4548D441CE0CA4300645680 /* SimplePasscode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4548D431CE0CA4300645680 /* SimplePasscode.framework */; };
+		D4548D451CE0CA4300645680 /* SimplePasscode.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4548D431CE0CA4300645680 /* SimplePasscode.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D4B097FC1CDF4385001AC22F /* SwiftDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B097FB1CDF4385001AC22F /* SwiftDate.framework */; };
 		D4BD7C601CDDF3C60021825D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BD7C5F1CDDF3C60021825D /* AppDelegate.swift */; };
 		D4BD7C621CDDF3C60021825D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BD7C611CDDF3C60021825D /* ViewController.swift */; };
@@ -38,13 +38,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D429879D1CE06B9A00D6BE4E /* Embed Frameworks */ = {
+		D4548D461CE0CA4300645680 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D429879C1CE06B9A00D6BE4E /* SimplePasscode.framework in Embed Frameworks */,
+				D4548D451CE0CA4300645680 /* SimplePasscode.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,7 +52,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D429879A1CE06B9A00D6BE4E /* SimplePasscode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = SimplePasscode.framework; path = "/Users/zetasq/Library/Developer/Xcode/DerivedData/SimplePasscode-hbeypyfwreaugefqutlprdrgsqzq/Build/Products/Debug-iphoneos/SimplePasscode.framework"; sourceTree = "<absolute>"; };
+		D4548D431CE0CA4300645680 /* SimplePasscode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = SimplePasscode.framework; path = "/Users/zetasq/Library/Developer/Xcode/DerivedData/SimplePasscode-adaqccihwnhmilgckhnbprwzfaja/Build/Products/Debug-iphoneos/SimplePasscode.framework"; sourceTree = "<absolute>"; };
 		D4B097FB1CDF4385001AC22F /* SwiftDate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftDate.framework; path = ../Carthage/Build/iOS/SwiftDate.framework; sourceTree = "<group>"; };
 		D4BD7C5C1CDDF3C60021825D /* Sample Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4BD7C5F1CDDF3C60021825D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4B097FC1CDF4385001AC22F /* SwiftDate.framework in Frameworks */,
-				D429879B1CE06B9A00D6BE4E /* SimplePasscode.framework in Frameworks */,
+				D4548D441CE0CA4300645680 /* SimplePasscode.framework in Frameworks */,
 				D4BD7C911CDDF5670021825D /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,7 +101,7 @@
 		D4BD7C531CDDF3C60021825D = {
 			isa = PBXGroup;
 			children = (
-				D429879A1CE06B9A00D6BE4E /* SimplePasscode.framework */,
+				D4548D431CE0CA4300645680 /* SimplePasscode.framework */,
 				D4B097FB1CDF4385001AC22F /* SwiftDate.framework */,
 				D4BD7C8F1CDDF4F80021825D /* SnapKit.framework */,
 				D4BD7C5E1CDDF3C60021825D /* Sample Project */,
@@ -163,7 +163,7 @@
 				D4BD7C591CDDF3C60021825D /* Frameworks */,
 				D4BD7C5A1CDDF3C60021825D /* Resources */,
 				D4BD7C921CDDF82F0021825D /* ShellScript */,
-				D429879D1CE06B9A00D6BE4E /* Embed Frameworks */,
+				D4548D461CE0CA4300645680 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

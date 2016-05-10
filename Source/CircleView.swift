@@ -45,4 +45,8 @@ class CircleView: UIView {
             return 12.5
         }
     }
+    
+    override func intrinsicContentSize() -> CGSize {
+        return CGSize(width: diameter, height: diameter)
+    }
 }
