@@ -7,15 +7,23 @@
 //
 
 import UIKit
+import SnapKit
 
 class InputCirclesView: UIView {
+    // MARK: - Properties
     let passcodeLength: Int
+    
+    private var circleViews: [CircleView] = []
+    
+    // MARK: - Init & Deinit
     init(passcodeLength: Int) {
         precondition(passcodeLength > 0, "Passcode's length should be positive")
         
         self.passcodeLength = passcodeLength
         
         super.init(frame: .zero)
+        
+        setupUI()
     }
     
     override init(frame: CGRect) {
@@ -23,5 +31,40 @@ class InputCirclesView: UIView {
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - UI Config
+    private func setupUI() {        
+        for i in 0..<passcodeLength {
+            let circleView = CircleView()
+            addSubview(circleView)
+            circleViews.append(circleView)
+            
+            circleView.snp_makeConstraints { make in
+                make.centerY.equalTo(self)
+                
+                if i == 0 {
+                    make.left.equalTo(self)
+                } else {
+                    make.left.equalTo(circleViews[i - 1].snp_right).offset(2 * circleView.diameter)
+                }
+                
+                if i == passcodeLength - 1 {
+                    make.right.equalTo(self)
+                }
+            }
+        }
+    }
+    
+    func setFilled(filled: Bool, atIndex index: Int) {
+        precondition((0..<passcodeLength).contains(index), "index should be non-negative and less than passcodeLength")
+        
+        circleViews[index].filled = filled
+    }
+    
+    func unfillAllCircles() {
+        for view in circleViews {
+            view.filled = false
+        }
     }
 }

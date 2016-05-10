@@ -11,11 +11,19 @@ import SimplePasscode
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var label: UILabel!
+//    @IBOutlet weak var label: UILabel!
+    
+    var numPadView: NumPadView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        numPadView = NumPadView()
+        view.addSubview(numPadView)
+        
+        numPadView.snp_makeConstraints { (make) in
+            make.center.equalTo(view)
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -25,14 +33,14 @@ class ViewController: UIViewController {
     }
 
 
-    @IBAction func buttonTapped(sender: AnyObject) {
-        SimplePasscode.changePasscode(presentingViewController: self, currentPasscode: "1111") { (newPasscode) in
-            if let newPasscode = newPasscode {
-                self.label.text = newPasscode
-            } else {
-                self.label.text = "canceled"
-            }
-        }
-    }
+//    @IBAction func buttonTapped(sender: AnyObject) {
+//        SimplePasscode.changePasscode(presentingViewController: self, currentPasscode: "1111") { (newPasscode) in
+//            if let newPasscode = newPasscode {
+//                self.label.text = newPasscode
+//            } else {
+//                self.label.text = "canceled"
+//            }
+//        }
+//    }
 }
 

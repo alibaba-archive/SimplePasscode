@@ -11,6 +11,8 @@
 		D429879F1CE082E500D6BE4E /* UIColor+Pallette.swift in Sources */ = {isa = PBXBuildFile; fileRef = D429879E1CE082E500D6BE4E /* UIColor+Pallette.swift */; };
 		D42987A21CE0962F00D6BE4E /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42987A11CE0962F00D6BE4E /* CircleView.swift */; };
 		D42987A41CE09AA200D6BE4E /* InputCirclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42987A31CE09AA200D6BE4E /* InputCirclesView.swift */; };
+		D42987AA1CE1835100D6BE4E /* DigitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42987A91CE1835100D6BE4E /* DigitButton.swift */; };
+		D42987AC1CE1A64F00D6BE4E /* NumPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42987AB1CE1A64F00D6BE4E /* NumPadView.swift */; };
 		D46092371CDD8AFD006C96E5 /* SimplePasscode.h in Headers */ = {isa = PBXBuildFile; fileRef = D46092361CDD8AFD006C96E5 /* SimplePasscode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D460923E1CDD8AFD006C96E5 /* SimplePasscode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46092331CDD8AFC006C96E5 /* SimplePasscode.framework */; };
 		D46092431CDD8AFD006C96E5 /* SimplePasscodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46092421CDD8AFD006C96E5 /* SimplePasscodeTests.swift */; };
@@ -46,6 +48,8 @@
 		D429879E1CE082E500D6BE4E /* UIColor+Pallette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Pallette.swift"; sourceTree = "<group>"; };
 		D42987A11CE0962F00D6BE4E /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		D42987A31CE09AA200D6BE4E /* InputCirclesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputCirclesView.swift; sourceTree = "<group>"; };
+		D42987A91CE1835100D6BE4E /* DigitButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitButton.swift; sourceTree = "<group>"; };
+		D42987AB1CE1A64F00D6BE4E /* NumPadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumPadView.swift; sourceTree = "<group>"; };
 		D46092331CDD8AFC006C96E5 /* SimplePasscode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimplePasscode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46092361CDD8AFD006C96E5 /* SimplePasscode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimplePasscode.h; sourceTree = "<group>"; };
 		D46092381CDD8AFD006C96E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 				D4B097EF1CDF16B0001AC22F /* PasscodeInputView.swift */,
 				D42987A11CE0962F00D6BE4E /* CircleView.swift */,
 				D42987A31CE09AA200D6BE4E /* InputCirclesView.swift */,
+				D42987A91CE1835100D6BE4E /* DigitButton.swift */,
+				D42987AB1CE1A64F00D6BE4E /* NumPadView.swift */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -287,9 +293,11 @@
 				D4B097F61CDF3694001AC22F /* ShiftView.swift in Sources */,
 				D4B097EC1CDED88F001AC22F /* AuthenticationViewController.swift in Sources */,
 				D42987A21CE0962F00D6BE4E /* CircleView.swift in Sources */,
+				D42987AA1CE1835100D6BE4E /* DigitButton.swift in Sources */,
 				D42987991CE027BC00D6BE4E /* PaddingLabel.swift in Sources */,
 				D4B097F21CDF1A4B001AC22F /* TouchIDInputView.swift in Sources */,
 				D4B097F81CDF41FA001AC22F /* FreezeManager.swift in Sources */,
+				D42987AC1CE1A64F00D6BE4E /* NumPadView.swift in Sources */,
 				D429879F1CE082E500D6BE4E /* UIColor+Pallette.swift in Sources */,
 				D4B097E41CDE2C05001AC22F /* API Entries.swift in Sources */,
 				D4B097F41CDF3526001AC22F /* LockscreenManager.swift in Sources */,

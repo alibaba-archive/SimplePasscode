@@ -137,7 +137,7 @@ class PasscodeCreationViewController: UIViewController {
         
         UIView.animateWithDuration(animationDuration, delay: 0, options: UIViewAnimationOptions(rawValue: animationCurve << 16), animations: {
             self.shiftView.snp_remakeConstraints { make in
-                make.top.equalTo(self.view).offset(64)
+                make.top.equalTo(self.snp_topLayoutGuideBottom)
                 make.left.equalTo(self.view)
                 make.right.equalTo(self.view)
                 make.bottom.equalTo(self.view).offset(-bottomOffset)
