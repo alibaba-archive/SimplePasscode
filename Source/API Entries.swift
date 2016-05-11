@@ -13,7 +13,6 @@ import LocalAuthentication
 // MARK: - Passcode Options
 var passcodeLength = 4
 var allowTouchID = true
-var maxTouchIDFailures = 3
 var maxPasscodeFailures = 6
 var firstFreezeTime = 60
 var secondFreezeTime = 60 * 5
@@ -28,7 +27,7 @@ var secondFreezeTime = 60 * 5
  - parameter firstFreezeTime: The first freeze time of passcode related function when user reached the maximum number of failures in unlocked state. The time duration is measured in seconds. During freeze time, user cannot create, change or delete passcode.
  - parameter secondFreezeTime: The second freeze time when user fails the authentication after the first freeze time passed. The time duration is measured in seconds. This duration should be longer than the first freeze time.
  */
-public func setup(allowTouchID allowTouchID: Bool = true, passcodeLength: Int = 4, maxTouchIDFailures: Int = 3, maxPasscodeFailures: Int = 6, firstFreezeTime: Int = 60, secondFreezeTime: Int = 60 * 5) {
+public func setup(allowTouchID allowTouchID: Bool = true, passcodeLength: Int = 4, maxPasscodeFailures: Int = 6, firstFreezeTime: Int = 60, secondFreezeTime: Int = 60 * 5) {
     if allowTouchID {
         let authenticationContext = LAContext()
         
@@ -42,7 +41,6 @@ public func setup(allowTouchID allowTouchID: Bool = true, passcodeLength: Int = 
     }
     
     SimplePasscode.passcodeLength = passcodeLength
-    SimplePasscode.maxTouchIDFailures = maxTouchIDFailures
     SimplePasscode.maxPasscodeFailures = maxPasscodeFailures
     SimplePasscode.firstFreezeTime = firstFreezeTime
     SimplePasscode.secondFreezeTime = secondFreezeTime

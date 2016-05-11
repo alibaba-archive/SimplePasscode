@@ -10,20 +10,33 @@ import UIKit
 
 public class LockScreenManager {
     private static var isShowingLockScreen = false
-    private static var authenticationViewController: AuthenticationViewController!
+    private static var mainWindow: UIWindow?
+    private static var lockWindow: UIWindow?
     
     public static func showLockScreen(passcode passcode: String, completion: (authenticationSuccess: Bool) -> Void) {
         guard !isShowingLockScreen else {
             return
         }
         
-        authenticationViewController = AuthenticationViewController()
+        isShowingLockScreen = true
+        
+        mainWindow = UIApplication.sharedApplication().keyWindow
+        mainWindow!.rootViewController?.view.endEditing(true)
+        
+        lockWindow = UIWindow(frame: UIScreen.mainScreen().bounds)
+        lockWindow!.windowLevel = mainWindow!.windowLevel + 1
+        
+        let authenticationViewController = AuthenticationViewController()
         authenticationViewController.currentPasscode = passcode
         authenticationViewController.completionHandler = completion
+        lockWindow!.rootViewController = authenticationViewController
         
-        UIApplication.sharedApplication().keyWindow!.rootViewController!.presentViewController(authenticationViewController, animated: true, completion: nil)
+        lockWindow!.alpha = 0
+        lockWindow!.makeKeyAndVisible()
         
-        isShowingLockScreen = true
+        UIView.animateWithDuration(0.3) { 
+            lockWindow!.alpha = 1
+        }
     }
     
     public static func hideLockScreen() {
@@ -31,11 +44,13 @@ public class LockScreenManager {
             return
         }
         
-        
-                UIApplication.sharedApplication().keyWindow!.rootViewController!.dismissViewControllerAnimated(false, completion: {
-                    authenticationViewController = nil
-                    isShowingLockScreen = false
-                })
-
+        UIView.animateWithDuration(0.3, animations: { 
+            lockWindow!.alpha = 0
+            }, completion: { _ in
+                mainWindow!.makeKeyAndVisible()
+                lockWindow = nil
+                mainWindow = nil
+                isShowingLockScreen = false
+        })
     }
 }

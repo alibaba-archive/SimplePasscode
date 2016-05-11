@@ -64,8 +64,9 @@ class PasscodeCreationViewController: UIViewController {
     
     // MARK: - Register Notification Observers
     private func registerNotificationObservers() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillChange(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillChange(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillChange(_:)), name: UIKeyboardWillChangeFrameNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.appDidEnterBackground(_:)), name: UIApplicationDidEnterBackgroundNotification, object: nil)
     }
     
     // MARK: - UI Config
@@ -145,6 +146,10 @@ class PasscodeCreationViewController: UIViewController {
             
             self.view.layoutIfNeeded()
             }, completion: nil)
+    }
+    
+    func appDidEnterBackground(notification: NSNotification) {
+        cancelButtonTapped()
     }
 }
 

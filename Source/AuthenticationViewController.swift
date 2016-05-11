@@ -141,8 +141,10 @@ class AuthenticationViewController: UIViewController {
             let authenticationReason = "Verify your identity to continue"
             
             authenticationContext.evaluatePolicy(.DeviceOwnerAuthenticationWithBiometrics, localizedReason: authenticationReason, reply: { (success, error) in
-                if success {
-                    self.authenticationComplete(success: true)
+                dispatch_async(dispatch_get_main_queue()) {
+                    if success {
+                        self.authenticationComplete(success: true)
+                    }
                 }
             })
         }

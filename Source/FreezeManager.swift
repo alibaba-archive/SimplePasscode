@@ -11,13 +11,11 @@ import SwiftDate
 
 class FreezeManager {
     private static var currentEndTimeStamp: NSDate?
-    private(set) static var currentTouchIDFailures = 0
     private(set) static var currentPasscodeFailures = 0
     
     // MARK: - Freeze
     static func clearState() {
         currentEndTimeStamp = nil
-        currentTouchIDFailures = 0
         currentPasscodeFailures = 0
     }
     
@@ -47,13 +45,6 @@ class FreezeManager {
         /// Measured in minutes
     static var timeUntilUnfreezed: Int {
         return NSDate().minutesUntil(currentEndTimeStamp ?? NSDate(timeIntervalSince1970: 0))
-    }
-    
-    // MARK: - TouchID
-    static func incrementTouchIDFailure(@noescape completion: (reachThreshold: Bool) -> Void) {
-        currentTouchIDFailures += 1
-        
-        completion(reachThreshold: currentTouchIDFailures >= maxTouchIDFailures)
     }
     
     // MARK: - Passcode
