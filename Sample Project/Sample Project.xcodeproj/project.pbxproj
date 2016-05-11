@@ -162,7 +162,7 @@
 				D4BD7C581CDDF3C60021825D /* Sources */,
 				D4BD7C591CDDF3C60021825D /* Frameworks */,
 				D4BD7C5A1CDDF3C60021825D /* Resources */,
-				D4BD7C921CDDF82F0021825D /* ShellScript */,
+				D4BD7C921CDDF82F0021825D /* Run Script */,
 				D42987A81CE171C400D6BE4E /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -282,7 +282,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		D4BD7C921CDDF82F0021825D /* ShellScript */ = {
+		D4BD7C921CDDF82F0021825D /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -291,6 +291,7 @@
 				"$(PROJECT_DIR)/../Carthage/Build/iOS/SnapKit.framework",
 				"$(PROJECT_DIR)/../Carthage/Build/iOS/SwiftDate.framework",
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -74,9 +74,9 @@ public class NumPadView: UIView {
             
             var digitRange: Range<Int>
             if i < 3 {
-                digitRange = (3 * i)..<(3 * (i + 1)) // (0, 1, 2), (3, 4, 5), (6, 7, 8)
+                digitRange = (3 * i + 1)..<(3 * i + 4) // (1, 2, 3), (4, 5, 6), (7, 8, 9)
             } else {
-                digitRange = 9...9
+                digitRange = 0...0
             }
             
             var previousButton: DigitButton!
