@@ -21,7 +21,7 @@ class AuthenticationViewController: UIViewController {
             promptLabel.font = UIFont.systemFontOfSize(18)
         }
         
-        promptLabel.text = "Enter Passcode"
+        promptLabel.text = NSLocalizedString("Enter Passcode", comment: "Enter Passcode")
         promptLabel.textAlignment = .Center
         
         return promptLabel
@@ -44,7 +44,7 @@ class AuthenticationViewController: UIViewController {
     private lazy var deleteButton: UIButton! = {
         let deleteButton = UIButton(type: .System)
         
-        deleteButton.setTitle("Delete", forState: .Normal)
+        deleteButton.setTitle(NSLocalizedString("Delete", comment: "Delete"), forState: .Normal)
         deleteButton.titleLabel?.font = UIFont.systemFontOfSize(16)
         deleteButton.addTarget(self, action: #selector(self.deleteButtonTapped), forControlEvents: .TouchUpInside)
         
@@ -138,7 +138,7 @@ class AuthenticationViewController: UIViewController {
     func authenticateUsingTouchID() {
         if allowTouchID {
             let authenticationContext = LAContext()
-            let authenticationReason = "Verify your identity to continue"
+            let authenticationReason = NSLocalizedString("Verify your identity to continue", comment: "Verify your identity to continue")
             
             authenticationContext.evaluatePolicy(.DeviceOwnerAuthenticationWithBiometrics, localizedReason: authenticationReason, reply: { (success, error) in
                 dispatch_async(dispatch_get_main_queue()) {
@@ -155,11 +155,9 @@ class AuthenticationViewController: UIViewController {
         if success {
             FreezeManager.clearState()
             completionHandler?(success: true)
-            print("authentication succeeds")
         } else {
             // User should be forced to sign out when authentication fails
             completionHandler?(success: false)
-            print("authentication fails")
         }
     }
 }

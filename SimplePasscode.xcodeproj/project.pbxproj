@@ -13,6 +13,9 @@
 		D42987A41CE09AA200D6BE4E /* InputCirclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42987A31CE09AA200D6BE4E /* InputCirclesView.swift */; };
 		D42987AA1CE1835100D6BE4E /* DigitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42987A91CE1835100D6BE4E /* DigitButton.swift */; };
 		D42987AC1CE1A64F00D6BE4E /* NumPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42987AB1CE1A64F00D6BE4E /* NumPadView.swift */; };
+		D45CC18D1CFAF04100D0C30D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D45CC18F1CFAF04100D0C30D /* Localizable.strings */; };
+		D45CC1921CFAF04100D0C30D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D45CC1941CFAF04100D0C30D /* InfoPlist.strings */; };
+		D45CC1971CFAF04200D0C30D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D45CC1991CFAF04200D0C30D /* InfoPlist.strings */; };
 		D46092371CDD8AFD006C96E5 /* SimplePasscode.h in Headers */ = {isa = PBXBuildFile; fileRef = D46092361CDD8AFD006C96E5 /* SimplePasscode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D460923E1CDD8AFD006C96E5 /* SimplePasscode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46092331CDD8AFC006C96E5 /* SimplePasscode.framework */; };
 		D46092431CDD8AFD006C96E5 /* SimplePasscodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46092421CDD8AFD006C96E5 /* SimplePasscodeTests.swift */; };
@@ -24,7 +27,6 @@
 		D4B097EC1CDED88F001AC22F /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B097EB1CDED88F001AC22F /* AuthenticationViewController.swift */; };
 		D4B097EE1CDEDAEA001AC22F /* PasscodeField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B097ED1CDEDAEA001AC22F /* PasscodeField.swift */; };
 		D4B097F01CDF16B0001AC22F /* PasscodeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B097EF1CDF16B0001AC22F /* PasscodeInputView.swift */; };
-		D4B097F21CDF1A4B001AC22F /* TouchIDInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B097F11CDF1A4B001AC22F /* TouchIDInputView.swift */; };
 		D4B097F41CDF3526001AC22F /* LockscreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B097F31CDF3526001AC22F /* LockscreenManager.swift */; };
 		D4B097F61CDF3694001AC22F /* ShiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B097F51CDF3694001AC22F /* ShiftView.swift */; };
 		D4B097F81CDF41FA001AC22F /* FreezeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B097F71CDF41FA001AC22F /* FreezeManager.swift */; };
@@ -50,6 +52,18 @@
 		D42987A31CE09AA200D6BE4E /* InputCirclesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputCirclesView.swift; sourceTree = "<group>"; };
 		D42987A91CE1835100D6BE4E /* DigitButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitButton.swift; sourceTree = "<group>"; };
 		D42987AB1CE1A64F00D6BE4E /* NumPadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumPadView.swift; sourceTree = "<group>"; };
+		D45CC18E1CFAF04100D0C30D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		D45CC1931CFAF04100D0C30D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		D45CC1981CFAF04200D0C30D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		D45CC19A1CFAF33F00D0C30D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		D45CC19B1CFAF34000D0C30D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		D45CC19C1CFAF34000D0C30D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		D45CC19D1CFAF58D00D0C30D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D45CC19E1CFAF58D00D0C30D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D45CC19F1CFAF58E00D0C30D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D45CC1A01CFAF73700D0C30D /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D45CC1A11CFAF73700D0C30D /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D45CC1A21CFAF73800D0C30D /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D46092331CDD8AFC006C96E5 /* SimplePasscode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimplePasscode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46092361CDD8AFD006C96E5 /* SimplePasscode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimplePasscode.h; sourceTree = "<group>"; };
 		D46092381CDD8AFD006C96E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -64,7 +78,6 @@
 		D4B097EB1CDED88F001AC22F /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		D4B097ED1CDEDAEA001AC22F /* PasscodeField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasscodeField.swift; sourceTree = "<group>"; };
 		D4B097EF1CDF16B0001AC22F /* PasscodeInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasscodeInputView.swift; sourceTree = "<group>"; };
-		D4B097F11CDF1A4B001AC22F /* TouchIDInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchIDInputView.swift; sourceTree = "<group>"; };
 		D4B097F31CDF3526001AC22F /* LockscreenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockscreenManager.swift; sourceTree = "<group>"; };
 		D4B097F51CDF3694001AC22F /* ShiftView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftView.swift; sourceTree = "<group>"; };
 		D4B097F71CDF41FA001AC22F /* FreezeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreezeManager.swift; sourceTree = "<group>"; };
@@ -143,6 +156,8 @@
 		D46092351CDD8AFD006C96E5 /* SimplePasscode */ = {
 			isa = PBXGroup;
 			children = (
+				D45CC1941CFAF04100D0C30D /* InfoPlist.strings */,
+				D45CC18F1CFAF04100D0C30D /* Localizable.strings */,
 				D46092361CDD8AFD006C96E5 /* SimplePasscode.h */,
 				D46092381CDD8AFD006C96E5 /* Info.plist */,
 			);
@@ -152,6 +167,7 @@
 		D46092411CDD8AFD006C96E5 /* SimplePasscodeTests */ = {
 			isa = PBXGroup;
 			children = (
+				D45CC1991CFAF04200D0C30D /* InfoPlist.strings */,
 				D46092421CDD8AFD006C96E5 /* SimplePasscodeTests.swift */,
 				D46092441CDD8AFD006C96E5 /* Info.plist */,
 			);
@@ -165,7 +181,6 @@
 				D42987971CE01FE400D6BE4E /* Extensions */,
 				D4B097E31CDE2C05001AC22F /* API Entries.swift */,
 				D4B097F71CDF41FA001AC22F /* FreezeManager.swift */,
-				D4B097F11CDF1A4B001AC22F /* TouchIDInputView.swift */,
 				D4B097E51CDED813001AC22F /* PasscodeCreationViewController.swift */,
 				D4B097E71CDED843001AC22F /* PasscodeChangeViewController.swift */,
 				D4B097E91CDED873001AC22F /* PasscodeDeletionViewController.swift */,
@@ -266,6 +281,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D45CC18D1CFAF04100D0C30D /* Localizable.strings in Resources */,
+				D45CC1921CFAF04100D0C30D /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D45CC1971CFAF04200D0C30D /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,7 +313,6 @@
 				D42987A21CE0962F00D6BE4E /* CircleView.swift in Sources */,
 				D42987AA1CE1835100D6BE4E /* DigitButton.swift in Sources */,
 				D42987991CE027BC00D6BE4E /* PaddingLabel.swift in Sources */,
-				D4B097F21CDF1A4B001AC22F /* TouchIDInputView.swift in Sources */,
 				D4B097F81CDF41FA001AC22F /* FreezeManager.swift in Sources */,
 				D42987AC1CE1A64F00D6BE4E /* NumPadView.swift in Sources */,
 				D429879F1CE082E500D6BE4E /* UIColor+Pallette.swift in Sources */,
@@ -322,6 +339,42 @@
 			targetProxy = D460923F1CDD8AFD006C96E5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D45CC18F1CFAF04100D0C30D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D45CC18E1CFAF04100D0C30D /* zh-Hans */,
+				D45CC19A1CFAF33F00D0C30D /* zh-Hant */,
+				D45CC19D1CFAF58D00D0C30D /* ja */,
+				D45CC1A01CFAF73700D0C30D /* ko */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		D45CC1941CFAF04100D0C30D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D45CC1931CFAF04100D0C30D /* zh-Hans */,
+				D45CC19B1CFAF34000D0C30D /* zh-Hant */,
+				D45CC19E1CFAF58D00D0C30D /* ja */,
+				D45CC1A11CFAF73700D0C30D /* ko */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D45CC1991CFAF04200D0C30D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D45CC1981CFAF04200D0C30D /* zh-Hans */,
+				D45CC19C1CFAF34000D0C30D /* zh-Hant */,
+				D45CC19F1CFAF58E00D0C30D /* ja */,
+				D45CC1A21CFAF73800D0C30D /* ko */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D46092451CDD8AFD006C96E5 /* Debug */ = {

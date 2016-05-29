@@ -57,10 +57,10 @@ class PasscodeDeletionViewController: UIViewController {
     
     // MARK: - UI Config
     private func setupUI() {
-        title = "Remove Passcode"
+        title = NSLocalizedString("Remove Passcode", comment: "Remove Passcode")
         view.backgroundColor = UIColor.backgroundColor
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: #selector(self.cancelButtonTapped))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Cancel", comment: "Cancel"), style: .Plain, target: self, action: #selector(self.cancelButtonTapped))
         
         view.addSubview(passcodeInputView)
         passcodeInputView.snp_remakeConstraints { (make) in
@@ -79,12 +79,17 @@ class PasscodeDeletionViewController: UIViewController {
             view.endEditing(true)
             
             let timeUntilUnfreezed = FreezeManager.timeUntilUnfreezed
-            passcodeInputView.title = "Try again in \(timeUntilUnfreezed) minute\(timeUntilUnfreezed > 1 ? "s" : "")"
+            
+            if timeUntilUnfreezed == 1 {
+                passcodeInputView.title = NSLocalizedString("Try again in 1 minute", comment: "Try again in 1 minute")
+            } else {
+                passcodeInputView.title = String.localizedStringWithFormat(NSLocalizedString("Try again in %ld minutes", comment: "Try again in %ld minutes"), timeUntilUnfreezed)
+            }
         } else {
-            passcodeInputView.title = "Enter your passcode"
+            passcodeInputView.title = NSLocalizedString("Enter your passcode", comment: "Enter your passcode")
             
             if FreezeManager.currentPasscodeFailures > 0 {
-                passcodeInputView.error = "\(FreezeManager.currentPasscodeFailures) Failed Passcode Attempts"
+                passcodeInputView.error = String.localizedStringWithFormat(NSLocalizedString("%ld Failed Passcode Attempts", comment: "%ld Failed Passcode Attempts"), FreezeManager.currentPasscodeFailures)
 
             }
         }

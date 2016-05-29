@@ -71,10 +71,10 @@ class PasscodeCreationViewController: UIViewController {
     
     // MARK: - UI Config
     private func setupUI() {
-        title = "New Passcode"
+        title = NSLocalizedString("New Passcode", comment: "New Passcode")
         view.backgroundColor = UIColor.backgroundColor
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: #selector(self.cancelButtonTapped))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Cancel", comment: "Cancel"), style: .Plain, target: self, action: #selector(self.cancelButtonTapped))
         
         view.addSubview(shiftView)
         shiftView.snp_remakeConstraints { make in
@@ -91,16 +91,21 @@ class PasscodeCreationViewController: UIViewController {
         
         if freezed {
             let timeUntilUnfreezed = FreezeManager.timeUntilUnfreezed
-            shiftView.currentView.title = "Try again in \(timeUntilUnfreezed) minute\(timeUntilUnfreezed > 1 ? "s" : "")"
             
-            shiftView.currentView.error = "\(FreezeManager.currentPasscodeFailures) Failed Passcode Attempts"
+            if timeUntilUnfreezed == 1 {
+                shiftView.currentView.title = NSLocalizedString("Try again in 1 minute", comment: "Try again in 1 minute")
+            } else {
+                shiftView.currentView.title = String.localizedStringWithFormat(NSLocalizedString("Try again in %ld minutes", comment: "Try again in %ld minutes"), timeUntilUnfreezed)
+            }
+            
+            shiftView.currentView.error = String.localizedStringWithFormat(NSLocalizedString("%ld Failed Passcode Attemtps", comment: "%ld Failed Passcode Attemtps"), FreezeManager.currentPasscodeFailures)
         } else {
-            shiftView.managedSubViews.first!.title = "Enter a passcode"
+            shiftView.managedSubViews.first!.title = NSLocalizedString("Enter a passcode", comment: "Enter a passcode")
             
             if let _ = secondPasscode {
-                shiftView.managedSubViews.first!.message = "Passcode did not match.\nTry again"
+                shiftView.managedSubViews.first!.message = NSLocalizedString("Passcode did not match.\nTry again", comment: "Passcode did not match.\nTry again")
             }
-            shiftView.managedSubViews.last!.title = "Re-enter your passcode"
+            shiftView.managedSubViews.last!.title = NSLocalizedString("Re-enter your passcode", comment: "Re-enter your passcode")
         }
     }
     

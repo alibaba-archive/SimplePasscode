@@ -1,0 +1,56 @@
+/* %ld Failed Passcode Attempts */
+"%ld Failed Passcode Attempts" = "密码输入错误%ld次";
+
+/* %ld Failed Passcode Attemtps */
+"%ld Failed Passcode Attemtps" = "密码输入错误%ld次";
+
+/* Cancel */
+"Cancel" = "取消";
+
+/* Change Passcode */
+"Change Passcode" = "修改密码";
+
+/* Delete */
+"Delete" = "删除";
+
+/* Enter Passcode */
+"Enter Passcode" = "输入密码";
+
+/* Enter a different passcode. Cannot re-use the same passcode */
+"Enter a different passcode. Cannot re-use the same passcode" = "请输入和以前不一样的密码";
+
+/* Enter a passcode */
+"Enter a passcode" = "输入密码";
+
+/* Enter your new passcode */
+"Enter your new passcode" = "输入新密码";
+
+/* Enter your old passcode */
+"Enter your old passcode" = "输入旧密码";
+
+/* Enter your passcode */
+"Enter your passcode" = "输入密码";
+
+/* New Passcode */
+"New Passcode" = "新密码";
+
+/* Passcode did not match.\nTry again */
+"Passcode did not match.
+Try again" = "密码错误
+请重新输入";
+
+/* Re-enter your passcode */
+"Re-enter your passcode" = "再次输入密码";
+
+/* Remove Passcode */
+"Remove Passcode" = "删除密码";
+
+/* Try again in %ld minutes */
+"Try again in %ld minutes" = "请在%ld分钟后再次尝试";
+
+/* Try again in 1 minute */
+"Try again in 1 minute" = "请在1分钟后再次尝试";
+
+/* Verify your identity to continue */
+"Verify your identity to continue" = "请确认你的身份";
+
