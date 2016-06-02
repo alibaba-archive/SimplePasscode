@@ -41,12 +41,13 @@ class InputCirclesView: UIView {
             circleViews.append(circleView)
             
             circleView.snp_makeConstraints { make in
-                make.centerY.equalTo(self)
-                
                 if i == 0 {
                     make.left.equalTo(self)
+                    make.top.equalTo(self)
+                    make.bottom.equalTo(self)
                 } else {
                     make.left.equalTo(circleViews[i - 1].snp_right).offset(2 * circleView.diameter)
+                    make.centerY.equalTo(self)
                 }
                 
                 if i == passcodeLength - 1 {

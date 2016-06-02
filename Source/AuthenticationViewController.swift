@@ -125,6 +125,15 @@ class AuthenticationViewController: UIViewController {
         }
     }
     
+    // MARK: - Overriden UI Behavior
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            return .All
+        } else {
+            return .Portrait
+        }
+    }
+    
     // MARK: - Action Handlers
     func deleteButtonTapped() {
         if inputtedPasscode.characters.count > 0 {
@@ -172,18 +181,24 @@ extension AuthenticationViewController: NumPadViewDelegate {
         inputCirclesView.setFilled(true, atIndex: inputtedPasscode.characters.count - 1)
         
         if inputtedPasscode.characters.count == currentPasscode.characters.count {
-            if inputtedPasscode != currentPasscode {
-                FreezeManager.incrementPasscodeFailure({ (reachThreshold) in
-                    if reachThreshold {
-                        authenticationComplete(success: false)
-                    } else {
-                        inputtedPasscode = ""
-                        inputCirclesView.unfillAllCircles()
-                        inputCirclesView.shake(needsVibration: true, completion: nil)
+            deleteButton.enabled = false
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.3 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
+                if self.inputtedPasscode != self.currentPasscode {
+                    FreezeManager.incrementPasscodeFailure { reachThreshold in
+                        if reachThreshold {
+                            self.authenticationComplete(success: false)
+                        } else {
+                            self.inputtedPasscode = ""
+                            self.inputCirclesView.unfillAllCircles()
+                            self.inputCirclesView.shake(needsVibration: true, completion: nil)
+                        }
                     }
-                })
-            } else {
-                authenticationComplete(success: true)
+                } else {
+                    self.authenticationComplete(success: true)
+                }
+                
+                self.deleteButton.enabled = true
             }
         }
     }

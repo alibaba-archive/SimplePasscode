@@ -15,7 +15,7 @@ class DigitButton: UIButton {
     var digitLabel: UILabel!
     
     var diameter: CGFloat {
-        if traitCollection.verticalSizeClass == .Regular && traitCollection.horizontalSizeClass == .Regular {
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
             return 82
         } else {
             return 75
@@ -85,6 +85,5 @@ class DigitButton: UIButton {
     // MARK: - AutoLayout
     override func intrinsicContentSize() -> CGSize {
         return CGSize(width: diameter, height: diameter)
-    }
-    
+    } 
 }

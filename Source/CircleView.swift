@@ -41,7 +41,7 @@ class CircleView: UIView {
     }
 
     var diameter: CGFloat {
-        if traitCollection.verticalSizeClass == .Regular && traitCollection.horizontalSizeClass == .Regular {
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
             return 16
         } else {
             return 12.5
