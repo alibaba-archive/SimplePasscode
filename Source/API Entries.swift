@@ -28,22 +28,22 @@ var secondFreezeTime = 60 * 5
  - parameter secondFreezeTime: The second freeze time when user fails the authentication after the first freeze time passed. The time duration is measured in seconds. This duration should be longer than the first freeze time.
  */
 public func setup(allowTouchID allowTouchID: Bool = true, passcodeLength: Int = 4, maxPasscodeFailures: Int = 6, firstFreezeTime: Int = 60, secondFreezeTime: Int = 60 * 5) {
-    if allowTouchID {
-        let authenticationContext = LAContext()
-        
-        if authenticationContext.canEvaluatePolicy(.DeviceOwnerAuthenticationWithBiometrics, error: nil) {
-            SimplePasscode.allowTouchID = true
-        } else {
-            SimplePasscode.allowTouchID = false
-        }
-    } else {
-        SimplePasscode.allowTouchID = false
-    }
+    setAllowTouchID(allowTouchID)
     
     SimplePasscode.passcodeLength = passcodeLength
     SimplePasscode.maxPasscodeFailures = maxPasscodeFailures
     SimplePasscode.firstFreezeTime = firstFreezeTime
     SimplePasscode.secondFreezeTime = secondFreezeTime
+}
+
+public func setAllowTouchID(allowTouchID: Bool) {
+    if allowTouchID {
+        let authenticationContext = LAContext()
+        
+        SimplePasscode.allowTouchID = authenticationContext.canEvaluatePolicy(.DeviceOwnerAuthenticationWithBiometrics, error: nil)
+    } else {
+        SimplePasscode.allowTouchID = false
+    }
 }
 
 public func createNewPasscode(presentingViewController presentingViewController: UIViewController, completion: (newPasscode: String?) -> Void) {

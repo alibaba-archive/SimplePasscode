@@ -13,11 +13,13 @@ class ViewController: UIViewController {
 
 //    @IBOutlet weak var label: UILabel!
     
+    @IBOutlet weak var xButton: UIButton!
     var numPadView: NumPadView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        xButton.setTitle(NSLocalizedString("God", comment: "God"), forState: .Normal)
     }
 
     @IBAction func buttonTapped(sender: AnyObject) {

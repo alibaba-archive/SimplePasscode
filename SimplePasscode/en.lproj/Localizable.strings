@@ -1,0 +1,50 @@
+/* %ld Failed Passcode Attempts */
+"%ld Failed Passcode Attempts" = "%ld Failed Passcode Attempts";
+
+/* Cancel */
+"Cancel" = "Cancel";
+
+/* Change Passcode */
+"Change Passcode" = "Change Passcode";
+
+/* Delete */
+"Delete" = "Delete";
+
+/* Enter Passcode */
+"Enter Passcode" = "Enter Passcode";
+
+/* Enter a different passcode. Cannot re-use the same passcode */
+"Enter a different passcode. Cannot re-use the same passcode" = "Enter a different passcode. Cannot re-use the same passcode";
+
+/* Enter a passcode */
+"Enter a passcode" = "Enter a passcode";
+
+/* Enter your new passcode */
+"Enter your new passcode" = "Enter your new passcode";
+
+/* Enter your old passcode */
+"Enter your old passcode" = "Enter your old passcode";
+
+/* Enter your passcode */
+"Enter your passcode" = "Enter your passcode";
+
+/* New Passcode */
+"New Passcode" = "New Passcode";
+
+/* Passcode did not match.\nTry again */
+"Passcode did not match.
+Try again" = "Passcode did not match.
+Try again";
+
+/* Re-enter your passcode */
+"Re-enter your passcode" = "Re-enter your passcode";
+
+/* Remove Passcode */
+"Remove Passcode" = "Remove Passcode";
+
+/* Try again in %ld minutes */
+"Try again in %ld minutes" = "Try again in %ld minutes";
+
+/* Try again in 1 minute */
+"Try again in 1 minute" = "Try again in 1 minute";
+

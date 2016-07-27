@@ -21,7 +21,7 @@ class AuthenticationViewController: UIViewController {
             promptLabel.font = UIFont.systemFontOfSize(18)
         }
         
-        promptLabel.text = NSLocalizedString("Enter Passcode", comment: "Enter Passcode")
+        promptLabel.text = NSLocalizedString("Enter Passcode", bundle: NSBundle(forClass: self.dynamicType), comment: "Enter Passcode")
         promptLabel.textAlignment = .Center
         
         return promptLabel
@@ -44,7 +44,7 @@ class AuthenticationViewController: UIViewController {
     private lazy var deleteButton: UIButton! = {
         let deleteButton = UIButton(type: .System)
         
-        deleteButton.setTitle(NSLocalizedString("Delete", comment: "Delete"), forState: .Normal)
+        deleteButton.setTitle(NSLocalizedString("Delete", bundle: NSBundle(forClass: self.dynamicType), comment: "Delete"), forState: .Normal)
         deleteButton.titleLabel?.font = UIFont.systemFontOfSize(16)
         deleteButton.addTarget(self, action: #selector(self.deleteButtonTapped), forControlEvents: .TouchUpInside)
         
@@ -140,15 +140,12 @@ class AuthenticationViewController: UIViewController {
             inputtedPasscode.removeAtIndex(inputtedPasscode.endIndex.predecessor())
             inputCirclesView.setFilled(false, atIndex: inputtedPasscode.characters.count)
         }
-        
-        print(inputtedPasscode)
     }
     
     func authenticateUsingTouchID() {
         if allowTouchID {
             let authenticationContext = LAContext()
-            let authenticationReason = NSLocalizedString("Verify your identity to continue", comment: "Verify your identity to continue")
-            
+            let authenticationReason = NSLocalizedString("Verify your identity to continue", bundle: NSBundle(forClass: self.dynamicType), comment: "Verify your identity to continue")
             authenticationContext.evaluatePolicy(.DeviceOwnerAuthenticationWithBiometrics, localizedReason: authenticationReason, reply: { (success, error) in
                 dispatch_async(dispatch_get_main_queue()) {
                     if success {

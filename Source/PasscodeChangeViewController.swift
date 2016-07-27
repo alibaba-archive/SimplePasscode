@@ -76,10 +76,10 @@ class PasscodeChangeViewController: UIViewController {
     
     // MARK: - UI Config
     private func setupUI() {
-        title = NSLocalizedString("Change Passcode", comment: "Change Passcode")
+        title = NSLocalizedString("Change Passcode", bundle: NSBundle(forClass: self.dynamicType), comment: "Change Passcode")
         view.backgroundColor = UIColor.backgroundColor
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Cancel", comment: "Cancel"), style: .Plain, target: self, action: #selector(self.cancelButtonTapped))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Cancel", bundle: NSBundle(forClass: self.dynamicType), comment: "Cancel"), style: .Plain, target: self, action: #selector(self.cancelButtonTapped))
         
         view.addSubview(shiftView)
         shiftView.snp_remakeConstraints { make in
@@ -100,32 +100,32 @@ class PasscodeChangeViewController: UIViewController {
             let timeUntilUnfreezed = FreezeManager.timeUntilUnfreezed
             
             if timeUntilUnfreezed == 1 {
-                shiftView.currentView.title = NSLocalizedString("Try again in 1 minute", comment: "Try again in 1 minute")
+                shiftView.currentView.title = NSLocalizedString("Try again in 1 minute", bundle: NSBundle(forClass: self.dynamicType), comment: "Try again in 1 minute")
             } else {
-                shiftView.currentView.title = String.localizedStringWithFormat(NSLocalizedString("Try again in %ld minutes", comment: "Try again in %ld minutes"), timeUntilUnfreezed)
+                shiftView.currentView.title = String.localizedStringWithFormat(NSLocalizedString("Try again in %ld minutes", bundle: NSBundle(forClass: self.dynamicType), comment: "Try again in %ld minutes"), timeUntilUnfreezed)
             }
             
-            shiftView.currentView.error = String.localizedStringWithFormat(NSLocalizedString("%ld Failed Passcode Attemtps", comment: "%ld Failed Passcode Attemtps"), FreezeManager.currentPasscodeFailures)
+            shiftView.currentView.error = String.localizedStringWithFormat(NSLocalizedString("%ld Failed Passcode Attempts", bundle: NSBundle(forClass: self.dynamicType), comment: "%ld Failed Passcode Attempts"), FreezeManager.currentPasscodeFailures)
         } else {
-            shiftView.managedSubViews[0].title = NSLocalizedString("Enter your old passcode", comment: "Enter your old passcode")
+            shiftView.managedSubViews[0].title = NSLocalizedString("Enter your old passcode", bundle: NSBundle(forClass: self.dynamicType), comment: "Enter your old passcode")
             
             if FreezeManager.currentPasscodeFailures > 0 {
-                shiftView.managedSubViews[0].error = String.localizedStringWithFormat(NSLocalizedString("%ld Failed Passcode Attempts", comment: "%ld Failed Passcode Attempts"), FreezeManager.currentPasscodeFailures)
+                shiftView.managedSubViews[0].error = String.localizedStringWithFormat(NSLocalizedString("%ld Failed Passcode Attempts", bundle: NSBundle(forClass: self.dynamicType), comment: "%ld Failed Passcode Attempts"), FreezeManager.currentPasscodeFailures)
             }
             
-            shiftView.managedSubViews[1].title = NSLocalizedString("Enter your new passcode", comment: "Enter your new passcode")
+            shiftView.managedSubViews[1].title = NSLocalizedString("Enter your new passcode", bundle: NSBundle(forClass: self.dynamicType), comment: "Enter your new passcode")
             
             if firstPasscode == oldPasscode {
-                shiftView.managedSubViews[1].message = NSLocalizedString("Enter a different passcode. Cannot re-use the same passcode", comment: "Enter a different passcode. Cannot re-use the same passcode")
+                shiftView.managedSubViews[1].message = NSLocalizedString("Enter a different passcode. Cannot re-use the same passcode", bundle: NSBundle(forClass: self.dynamicType), comment: "Enter a different passcode. Cannot re-use the same passcode")
             } else {
                 if let _ = secondPasscode {
-                    shiftView.managedSubViews[1].message = NSLocalizedString("Passcode did not match.\nTry again", comment: "Passcode did not match.\nTry again")
+                    shiftView.managedSubViews[1].message = NSLocalizedString("Passcode did not match.\nTry again", bundle: NSBundle(forClass: self.dynamicType), comment: "Passcode did not match.\nTry again")
                 } else {
                     shiftView.managedSubViews[1].message = nil
                 }
             }
             
-            shiftView.managedSubViews[2].title = NSLocalizedString("Re-enter your passcode", comment: "Re-enter your passcode")
+            shiftView.managedSubViews[2].title = NSLocalizedString("Re-enter your passcode", bundle: NSBundle(forClass: self.dynamicType), comment: "Re-enter your passcode")
         }
     }
     

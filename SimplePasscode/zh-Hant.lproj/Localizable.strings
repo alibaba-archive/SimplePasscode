@@ -1,9 +1,6 @@
 /* %ld Failed Passcode Attempts */
 "%ld Failed Passcode Attempts" = "密碼輸入錯誤%ld次";
 
-/* %ld Failed Passcode Attemtps */
-"%ld Failed Passcode Attemtps" = "密碼輸入錯誤%ld次";
-
 /* Cancel */
 "Cancel" = "取消";
 
@@ -35,9 +32,7 @@
 "New Passcode" = "新密碼";
 
 /* Passcode did not match.\nTry again */
-"Passcode did not match.
-Try again" = "密碼錯誤
-請重新輸入";
+"Passcode did not match.\nTry again" = "密碼錯誤\n請重新輸入";
 
 /* Re-enter your passcode */
 "Re-enter your passcode" = "再次輸入密碼";

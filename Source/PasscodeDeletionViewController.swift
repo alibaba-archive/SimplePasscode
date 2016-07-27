@@ -57,10 +57,10 @@ class PasscodeDeletionViewController: UIViewController {
     
     // MARK: - UI Config
     private func setupUI() {
-        title = NSLocalizedString("Remove Passcode", comment: "Remove Passcode")
+        title = NSLocalizedString("Remove Passcode", bundle: NSBundle(forClass: self.dynamicType), comment: "Remove Passcode")
         view.backgroundColor = UIColor.backgroundColor
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Cancel", comment: "Cancel"), style: .Plain, target: self, action: #selector(self.cancelButtonTapped))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Cancel", bundle: NSBundle(forClass: self.dynamicType), comment: "Cancel"), style: .Plain, target: self, action: #selector(self.cancelButtonTapped))
         
         view.addSubview(passcodeInputView)
         passcodeInputView.snp_remakeConstraints { (make) in
@@ -81,15 +81,15 @@ class PasscodeDeletionViewController: UIViewController {
             let timeUntilUnfreezed = FreezeManager.timeUntilUnfreezed
             
             if timeUntilUnfreezed == 1 {
-                passcodeInputView.title = NSLocalizedString("Try again in 1 minute", comment: "Try again in 1 minute")
+                passcodeInputView.title = NSLocalizedString("Try again in 1 minute", bundle: NSBundle(forClass: self.dynamicType), comment: "Try again in 1 minute")
             } else {
-                passcodeInputView.title = String.localizedStringWithFormat(NSLocalizedString("Try again in %ld minutes", comment: "Try again in %ld minutes"), timeUntilUnfreezed)
+                passcodeInputView.title = String.localizedStringWithFormat(NSLocalizedString("Try again in %ld minutes", bundle: NSBundle(forClass: self.dynamicType), comment: "Try again in %ld minutes"), timeUntilUnfreezed)
             }
         } else {
-            passcodeInputView.title = NSLocalizedString("Enter your passcode", comment: "Enter your passcode")
+            passcodeInputView.title = NSLocalizedString("Enter your passcode", bundle: NSBundle(forClass: self.dynamicType), comment: "Enter your passcode")
             
             if FreezeManager.currentPasscodeFailures > 0 {
-                passcodeInputView.error = String.localizedStringWithFormat(NSLocalizedString("%ld Failed Passcode Attempts", comment: "%ld Failed Passcode Attempts"), FreezeManager.currentPasscodeFailures)
+                passcodeInputView.error = String.localizedStringWithFormat(NSLocalizedString("%ld Failed Passcode Attempts", bundle: NSBundle(forClass: self.dynamicType), comment: "%ld Failed Passcode Attempts"), FreezeManager.currentPasscodeFailures)
 
             }
         }
