@@ -21,7 +21,7 @@ public class LockScreenManager {
         isShowingLockScreen = true
         
         mainWindow = UIApplication.sharedApplication().keyWindow
-        mainWindow!.rootViewController?.view.endEditing(true)
+        mainWindow!.endEditing(true)
         
         lockWindow = UIWindow(frame: UIScreen.mainScreen().bounds)
         lockWindow!.windowLevel = mainWindow!.windowLevel + 1
@@ -34,7 +34,7 @@ public class LockScreenManager {
         lockWindow!.alpha = 0
         lockWindow!.makeKeyAndVisible()
         
-        UIView.animateWithDuration(0.3) { 
+        UIView.animateWithDuration(0.1) {
             lockWindow!.alpha = 1
         }
     }
