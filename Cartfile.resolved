@@ -1,2 +1,2 @@
-github "SnapKit/SnapKit" "0.22.0"
-github "malcommac/SwiftDate" "3.0.9"
+github "SnapKit/SnapKit" "3.0.0"
+github "malcommac/SwiftDate" "4f894d54a04a5bbc3fb0a084506f7abef59a1904"

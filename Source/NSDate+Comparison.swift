@@ -8,12 +8,12 @@
 
 import Foundation
 
-extension NSDate {
-    func minutesUntil(targetDate: NSDate) -> Int {
-        let calendar = NSCalendar.currentCalendar()
+extension Date {
+    func minutesUntil(_ targetDate: Date) -> Int {
+        let calendar = Calendar.current
         
-        let diff = calendar.components([.Minute, .Second], fromDate: self, toDate: targetDate, options: [])
+        let diff = (calendar as NSCalendar).components([.minute, .second], from: self, to: targetDate, options: [])
         
-        return diff.second > 0 ? diff.minute + 1 : diff.minute
+        return diff.second! > 0 ? diff.minute! + 1 : diff.minute!
     }
 }

@@ -10,15 +10,15 @@ import UIKit
 import SnapKit
 
 enum ShiftDirection {
-    case Forward
-    case Backward
+    case forward
+    case backward
 }
 
 class ShiftView<T: UIView>: UIView {
     // MARK: - Properties
     let managedSubViews: [T]
     
-    private(set) var currentView: T
+    fileprivate(set) var currentView: T
     
     // MARK: - Initializers
     init(managedSubViews: [T]) {
@@ -41,7 +41,7 @@ class ShiftView<T: UIView>: UIView {
     }
     
     // MARK: - Common Initialization Logic
-    private func setup() {
+    fileprivate func setup() {
         clipsToBounds = true
         
         for view in managedSubViews {
@@ -53,7 +53,7 @@ class ShiftView<T: UIView>: UIView {
         }
         
         var previousView = currentView
-        for view in managedSubViews[managedSubViews.startIndex.successor()..<managedSubViews.endIndex] {
+        for view in managedSubViews[managedSubViews.indices.suffix(from: (managedSubViews.startIndex + 1))] {
             view.snp_remakeConstraints { make in
                 make.top.equalTo(previousView)
                 make.bottom.equalTo(previousView)
@@ -67,18 +67,18 @@ class ShiftView<T: UIView>: UIView {
     
     // MARK: - Public Properties
     var currentIndex: Array<T>.Index {
-        return managedSubViews.indexOf(currentView)!
+        return managedSubViews.index(of: currentView)!
     }
     
     // MARK: - Shift Function
-    func shift(direction: ShiftDirection) {
+    func shift(_ direction: ShiftDirection) {
         switch direction {
-        case .Forward:
+        case .forward:
             if currentView != managedSubViews.last {
-                let currentIndex = managedSubViews.indexOf(currentView)!
-                let nextView = managedSubViews[currentIndex.successor()]
+                let currentIndex = managedSubViews.index(of: currentView)!
+                let nextView = managedSubViews[(currentIndex + 1)]
                 
-                UIView.animateWithDuration(0.5, delay: 0, options: [.CurveEaseInOut], animations: { 
+                UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions(), animations: { 
                     self.currentView.snp_remakeConstraints { make in
                         make.top.equalTo(nextView)
                         make.bottom.equalTo(nextView)
@@ -97,12 +97,12 @@ class ShiftView<T: UIView>: UIView {
                         }
                     })
                 }
-        case .Backward:
+        case .backward:
             if currentView != managedSubViews.first {
-                let currentIndex = managedSubViews.indexOf(currentView)!
-                let previousView = managedSubViews[currentIndex.predecessor()]
+                let currentIndex = managedSubViews.index(of: currentView)!
+                let previousView = managedSubViews[(currentIndex - 1)]
                 
-                UIView.animateWithDuration(0.5, delay: 0, options: [.CurveEaseInOut], animations: { 
+                UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions(), animations: { 
                     self.currentView.snp_remakeConstraints { make in
                         make.top.equalTo(previousView)
                         make.bottom.equalTo(previousView)

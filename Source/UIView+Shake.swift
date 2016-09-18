@@ -10,18 +10,18 @@ import UIKit
 import AudioToolbox
 
 extension UIView {
-    func shake(needsVibration needsVibration: Bool, completion: (() -> Void)?) {
+    func shake(needsVibration: Bool, completion: (() -> Void)?) {
         if needsVibration {
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
         }
         
-        UIView.animateKeyframesWithDuration(0.5, delay: 0, options: [], animations: {
+        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: {
             let xOffsets: [CGFloat] = [0, 25, -20, 15, -10, 5, 0]
             let frameDuration = 1.0 / Double(xOffsets.count)
             
             for i in 0..<xOffsets.count {
-                UIView.addKeyframeWithRelativeStartTime(Double(i) * frameDuration, relativeDuration: frameDuration, animations: {
-                    self.transform = CGAffineTransformMakeTranslation(xOffsets[i], 0)
+                UIView.addKeyframe(withRelativeStartTime: Double(i) * frameDuration, relativeDuration: frameDuration, animations: {
+                    self.transform = CGAffineTransform(translationX: xOffsets[i], y: 0)
                 })
             }
         }) { finished in

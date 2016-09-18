@@ -11,16 +11,16 @@ import SnapKit
 
 class PasscodeCreationViewController: UIViewController {
     enum CreationStage {
-        case First
-        case Confirm
+        case first
+        case confirm
     }
     
     // MARK: - Private Properties
-    private var stage: CreationStage = .First
-    private var firstPasscode: String?
-    private var secondPasscode: String?
+    fileprivate var stage: CreationStage = .first
+    fileprivate var firstPasscode: String?
+    fileprivate var secondPasscode: String?
     
-    private lazy var shiftView: ShiftView<PasscodeInputView>! = {
+    fileprivate lazy var shiftView: ShiftView<PasscodeInputView>! = {
         let firstInputView = PasscodeInputView(passcodeLength: SimplePasscode.passcodeLength)
         firstInputView.delegate = self
         
@@ -34,11 +34,11 @@ class PasscodeCreationViewController: UIViewController {
     }()
     
     // MARK: Public Properties
-    var completionHandler: ((newPasscode: String?) -> Void)?
+    var completionHandler: ((_ newPasscode: String?) -> Void)?
     
     // MARK: Init & Deinit
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - VC Life Cycle
@@ -50,31 +50,31 @@ class PasscodeCreationViewController: UIViewController {
         updateInputView()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         shiftView.currentView.becomeFirstResponder()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         view.endEditing(true)
     }
     
     // MARK: - Register Notification Observers
-    private func registerNotificationObservers() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillChange(_:)), name: UIKeyboardWillChangeFrameNotification, object: nil)
+    fileprivate func registerNotificationObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChange(_:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.appDidEnterBackground(_:)), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.appDidEnterBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
     }
     
     // MARK: - UI Config
-    private func setupUI() {
-        title = NSLocalizedString("New Passcode", bundle: NSBundle(forClass: self.dynamicType), comment: "New Passcode")
+    fileprivate func setupUI() {
+        title = NSLocalizedString("New Passcode", bundle: Bundle(for: type(of: self)), comment: "New Passcode")
         view.backgroundColor = UIColor.backgroundColor
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Cancel", bundle: NSBundle(forClass: self.dynamicType), comment: "Cancel"), style: .Plain, target: self, action: #selector(self.cancelButtonTapped))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Cancel", bundle: Bundle(for: type(of: self)), comment: "Cancel"), style: .plain, target: self, action: #selector(self.cancelButtonTapped))
         
         view.addSubview(shiftView)
         shiftView.snp_remakeConstraints { make in
@@ -85,7 +85,7 @@ class PasscodeCreationViewController: UIViewController {
         }
     }
     
-    private func updateInputView() {
+    fileprivate func updateInputView() {
         let freezed = FreezeManager.freezed
         shiftView.currentView.enabled = !freezed
         
@@ -93,57 +93,57 @@ class PasscodeCreationViewController: UIViewController {
             let timeUntilUnfreezed = FreezeManager.timeUntilUnfreezed
             
             if timeUntilUnfreezed == 1 {
-                shiftView.currentView.title = NSLocalizedString("Try again in 1 minute", bundle: NSBundle(forClass: self.dynamicType), comment: "Try again in 1 minute")
+                shiftView.currentView.title = NSLocalizedString("Try again in 1 minute", bundle: Bundle(for: type(of: self)), comment: "Try again in 1 minute")
             } else {
-                shiftView.currentView.title = String.localizedStringWithFormat(NSLocalizedString("Try again in %ld minutes", bundle: NSBundle(forClass: self.dynamicType), comment: "Try again in %ld minutes"), timeUntilUnfreezed)
+                shiftView.currentView.title = String.localizedStringWithFormat(NSLocalizedString("Try again in %ld minutes", bundle: Bundle(for: type(of: self)), comment: "Try again in %ld minutes"), timeUntilUnfreezed)
             }
             
-            shiftView.currentView.error = String.localizedStringWithFormat(NSLocalizedString("%ld Failed Passcode Attempts", bundle: NSBundle(forClass: self.dynamicType), comment: "%ld Failed Passcode Attempts"), FreezeManager.currentPasscodeFailures)
+            shiftView.currentView.error = String.localizedStringWithFormat(NSLocalizedString("%ld Failed Passcode Attempts", bundle: Bundle(for: type(of: self)), comment: "%ld Failed Passcode Attempts"), FreezeManager.currentPasscodeFailures)
         } else {
-            shiftView.managedSubViews.first!.title = NSLocalizedString("Enter a passcode", bundle: NSBundle(forClass: self.dynamicType), comment: "Enter a passcode")
+            shiftView.managedSubViews.first!.title = NSLocalizedString("Enter a passcode", bundle: Bundle(for: type(of: self)), comment: "Enter a passcode")
             
             if let _ = secondPasscode {
-                shiftView.managedSubViews.first!.message = NSLocalizedString("Passcode did not match.\nTry again", bundle: NSBundle(forClass: self.dynamicType), comment: "Passcode did not match.\nTry again")
+                shiftView.managedSubViews.first!.message = NSLocalizedString("Passcode did not match.\nTry again", bundle: Bundle(for: type(of: self)), comment: "Passcode did not match.\nTry again")
             }
-            shiftView.managedSubViews.last!.title = NSLocalizedString("Re-enter your passcode", bundle: NSBundle(forClass: self.dynamicType), comment: "Re-enter your passcode")
+            shiftView.managedSubViews.last!.title = NSLocalizedString("Re-enter your passcode", bundle: Bundle(for: type(of: self)), comment: "Re-enter your passcode")
         }
     }
     
     // MARK: - Action Handlers
     func cancelButtonTapped() {
-        completionHandler?(newPasscode: nil)
+        completionHandler?(nil)
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Notification Handlers
-    func keyboardWillChange(notification: NSNotification) {
-        guard let userInfo = notification.userInfo else {
+    func keyboardWillChange(_ notification: Notification) {
+        guard let userInfo = (notification as NSNotification).userInfo else {
             return
         }
         
-        guard let keyboardFrameInScreen = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue() else {
+        guard let keyboardFrameInScreen = (userInfo[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue else {
             return
         }
         
-        guard let keyboardFrameInWindow = view.window?.convertRect(keyboardFrameInScreen, fromWindow: nil) else {
+        guard let keyboardFrameInWindow = view.window?.convert(keyboardFrameInScreen, from: nil) else {
             return
         }
         
-        let keyboardFrameInView = view.convertRect(keyboardFrameInWindow, fromView: nil)
+        let keyboardFrameInView = view.convert(keyboardFrameInWindow, from: nil)
         let bottomOffset = max(view.bounds.height - keyboardFrameInView.origin.y, 0)
         
-        guard let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue else {
+        guard let animationDuration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue else {
             return
         }
         
-        guard let animationCurve = userInfo[UIKeyboardAnimationCurveUserInfoKey]?.unsignedIntegerValue else {
+        guard let animationCurve = (userInfo[UIKeyboardAnimationCurveUserInfoKey] as AnyObject).uintValue else {
             return
         }
         
-        UIView.animateWithDuration(animationDuration, delay: 0, options: UIViewAnimationOptions(rawValue: animationCurve << 16), animations: {
+        UIView.animate(withDuration: animationDuration, delay: 0, options: UIViewAnimationOptions(rawValue: animationCurve << 16), animations: {
             self.shiftView.snp_remakeConstraints { make in
-                make.top.equalTo(self.snp_topLayoutGuideBottom)
+                make.top.equalTo(self.topLayoutGuide.snp.bottom)
                 make.left.equalTo(self.view)
                 make.right.equalTo(self.view)
                 make.bottom.equalTo(self.view).offset(-bottomOffset)
@@ -153,20 +153,20 @@ class PasscodeCreationViewController: UIViewController {
             }, completion: nil)
     }
     
-    func appDidEnterBackground(notification: NSNotification) {
+    func appDidEnterBackground(_ notification: Notification) {
         cancelButtonTapped()
     }
 }
 
 // MARK: - PasscodeInputView Delegate
 extension PasscodeCreationViewController: PasscodeInputViewDelegate {
-    func passcodeInputView(inputView: PasscodeInputView, didFinishWithPasscode passcode: String) {
+    func passcodeInputView(_ inputView: PasscodeInputView, didFinishWithPasscode passcode: String) {
         if inputView == shiftView.managedSubViews.first {
             firstPasscode = passcode
             shiftView.managedSubViews.last!.passcode = ""
             shiftView.managedSubViews.last!.becomeFirstResponder()
             
-            shiftView.shift(.Forward)
+            shiftView.shift(.forward)
         } else {
             secondPasscode = passcode
             
@@ -175,12 +175,12 @@ extension PasscodeCreationViewController: PasscodeInputViewDelegate {
                 updateInputView()
                 shiftView.managedSubViews.first!.becomeFirstResponder()
                 
-                shiftView.shift(.Backward)
+                shiftView.shift(.backward)
             } else {
                 FreezeManager.clearState()
-                completionHandler?(newPasscode: passcode)
+                completionHandler?(passcode)
                 
-                dismissViewControllerAnimated(true, completion: nil)
+                dismiss(animated: true, completion: nil)
             }
         }
     }

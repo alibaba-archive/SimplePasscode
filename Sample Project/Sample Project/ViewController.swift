@@ -19,10 +19,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        xButton.setTitle(NSLocalizedString("God", comment: "God"), forState: .Normal)
+        xButton.setTitle(NSLocalizedString("God", comment: "God"), for: UIControlState())
     }
 
-    @IBAction func buttonTapped(sender: AnyObject) {
+    @IBAction func buttonTapped(_ sender: AnyObject) {
         LockScreenManager.showLockScreen(passcode: "1111") { (authenticationSuccess) in
             print(authenticationSuccess)
             LockScreenManager.hideLockScreen()

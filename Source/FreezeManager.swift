@@ -10,8 +10,8 @@ import Foundation
 import SwiftDate
 
 class FreezeManager {
-    private static var currentEndTimeStamp: NSDate?
-    private(set) static var currentPasscodeFailures = 0
+    fileprivate static var currentEndTimeStamp: Date?
+    fileprivate(set) static var currentPasscodeFailures = 0
     
     // MARK: - Freeze
     static func clearState() {
@@ -21,7 +21,7 @@ class FreezeManager {
     
     static func freeze() {
         var duration: Int
-        let now = NSDate()
+        let now = Date()
         
         if currentPasscodeFailures > maxPasscodeFailures {
             duration = secondFreezeTime
@@ -31,26 +31,26 @@ class FreezeManager {
         
         let endTimeStamp = now + duration.seconds
         
-        if endTimeStamp > (currentEndTimeStamp ?? NSDate(timeIntervalSince1970: 0)) {
+        if endTimeStamp > (currentEndTimeStamp ?? Date(timeIntervalSince1970: 0)) {
             currentEndTimeStamp = endTimeStamp
         }
     }
     
     static var freezed: Bool {
-        let now = NSDate()
+        let now = Date()
         
-        return now < (currentEndTimeStamp ?? NSDate(timeIntervalSince1970: 0))
+        return now < (currentEndTimeStamp ?? Date(timeIntervalSince1970: 0))
     }
     
         /// Measured in minutes
     static var timeUntilUnfreezed: Int {
-        return NSDate().minutesUntil(currentEndTimeStamp ?? NSDate(timeIntervalSince1970: 0))
+        return Date().minutesUntil(currentEndTimeStamp ?? Date(timeIntervalSince1970: 0))
     }
     
     // MARK: - Passcode
-    static func incrementPasscodeFailure(@noescape completion: (reachThreshold: Bool) -> Void) {
+    static func incrementPasscodeFailure(_ completion: (_ reachThreshold: Bool) -> Void) {
         currentPasscodeFailures += 1
         
-        completion(reachThreshold: currentPasscodeFailures >= maxPasscodeFailures)
+        completion(currentPasscodeFailures >= maxPasscodeFailures)
     }
 }

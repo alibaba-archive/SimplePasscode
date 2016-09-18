@@ -8,22 +8,22 @@
 
 import UIKit
 
-public class LockScreenManager {
-    private static var isShowingLockScreen = false
-    private static var mainWindow: UIWindow?
-    private static var lockWindow: UIWindow?
+open class LockScreenManager {
+    fileprivate static var isShowingLockScreen = false
+    fileprivate static var mainWindow: UIWindow?
+    fileprivate static var lockWindow: UIWindow?
     
-    public static func showLockScreen(passcode passcode: String, completion: (authenticationSuccess: Bool) -> Void) {
+    open static func showLockScreen(passcode: String, completion: @escaping (_ authenticationSuccess: Bool) -> Void) {
         guard !isShowingLockScreen else {
             return
         }
         
         isShowingLockScreen = true
         
-        mainWindow = UIApplication.sharedApplication().keyWindow
+        mainWindow = UIApplication.shared.keyWindow
         mainWindow!.endEditing(true)
         
-        lockWindow = UIWindow(frame: UIScreen.mainScreen().bounds)
+        lockWindow = UIWindow(frame: UIScreen.main.bounds)
         lockWindow!.windowLevel = mainWindow!.windowLevel + 1
         
         let authenticationViewController = AuthenticationViewController()
@@ -34,17 +34,17 @@ public class LockScreenManager {
         lockWindow!.alpha = 0
         lockWindow!.makeKeyAndVisible()
         
-        UIView.animateWithDuration(0.1) {
+        UIView.animate(withDuration: 0.1, animations: {
             lockWindow!.alpha = 1
-        }
+        }) 
     }
     
-    public static func hideLockScreen() {
+    open static func hideLockScreen() {
         guard isShowingLockScreen else {
             return
         }
         
-        UIView.animateWithDuration(0.3, animations: { 
+        UIView.animate(withDuration: 0.3, animations: { 
             lockWindow!.alpha = 0
             }, completion: { _ in
                 mainWindow!.makeKeyAndVisible()

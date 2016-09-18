@@ -21,14 +21,14 @@ class CircleView: UIView {
         setupUI()
     }
     
-    private func setupUI() {
+    fileprivate func setupUI() {
         tintColor = UIColor.customTintColor
         
         layer.cornerRadius = diameter / 2
         layer.borderWidth = 1
-        layer.borderColor = tintColor.CGColor
+        layer.borderColor = tintColor.cgColor
         
-        backgroundColor = UIColor.clearColor()
+        backgroundColor = UIColor.clear
     }
     
     var filled: Bool {
@@ -36,19 +36,19 @@ class CircleView: UIView {
             return backgroundColor == tintColor
         }
         set {
-            backgroundColor = newValue ? tintColor : UIColor.clearColor()
+            backgroundColor = newValue ? tintColor : UIColor.clear
         }
     }
 
     var diameter: CGFloat {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             return 16
         } else {
             return 12.5
         }
     }
     
-    override func intrinsicContentSize() -> CGSize {
+    override var intrinsicContentSize : CGSize {
         return CGSize(width: diameter, height: diameter)
     }
 }

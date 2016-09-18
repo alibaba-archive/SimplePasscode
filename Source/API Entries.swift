@@ -27,7 +27,7 @@ var secondFreezeTime = 60 * 5
  - parameter firstFreezeTime: The first freeze time of passcode related function when user reached the maximum number of failures in unlocked state. The time duration is measured in seconds. During freeze time, user cannot create, change or delete passcode.
  - parameter secondFreezeTime: The second freeze time when user fails the authentication after the first freeze time passed. The time duration is measured in seconds. This duration should be longer than the first freeze time.
  */
-public func setup(allowTouchID allowTouchID: Bool = true, passcodeLength: Int = 4, maxPasscodeFailures: Int = 6, firstFreezeTime: Int = 60, secondFreezeTime: Int = 60 * 5) {
+public func setup(allowTouchID: Bool = true, passcodeLength: Int = 4, maxPasscodeFailures: Int = 6, firstFreezeTime: Int = 60, secondFreezeTime: Int = 60 * 5) {
     setAllowTouchID(allowTouchID)
     
     SimplePasscode.passcodeLength = passcodeLength
@@ -36,46 +36,46 @@ public func setup(allowTouchID allowTouchID: Bool = true, passcodeLength: Int = 
     SimplePasscode.secondFreezeTime = secondFreezeTime
 }
 
-public func setAllowTouchID(allowTouchID: Bool) {
+public func setAllowTouchID(_ allowTouchID: Bool) {
     if allowTouchID {
         let authenticationContext = LAContext()
         
-        SimplePasscode.allowTouchID = authenticationContext.canEvaluatePolicy(.DeviceOwnerAuthenticationWithBiometrics, error: nil)
+        SimplePasscode.allowTouchID = authenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
     } else {
         SimplePasscode.allowTouchID = false
     }
 }
 
-public func createNewPasscode(presentingViewController presentingViewController: UIViewController, completion: (newPasscode: String?) -> Void) {
+public func createNewPasscode(presentingViewController: UIViewController, completion: @escaping (_ newPasscode: String?) -> Void) {
     let passcodeCreationViewController = PasscodeCreationViewController()
     passcodeCreationViewController.completionHandler = completion
     
     let navigationController = UINavigationController(rootViewController: passcodeCreationViewController)
-    navigationController.modalPresentationStyle = .CurrentContext
+    navigationController.modalPresentationStyle = .currentContext
     
-    presentingViewController.presentViewController(navigationController, animated: true, completion: nil)
+    presentingViewController.present(navigationController, animated: true, completion: nil)
 }
 
-public func changePasscode(presentingViewController presentingViewController: UIViewController, currentPasscode: String, completion: (newPasscode: String?) -> Void) {
+public func changePasscode(presentingViewController: UIViewController, currentPasscode: String, completion: @escaping (_ newPasscode: String?) -> Void) {
     let passcodeChangeViewController = PasscodeChangeViewController()
     passcodeChangeViewController.completionHandler = completion
     passcodeChangeViewController.oldPasscode = currentPasscode
     
     let navigationController = UINavigationController(rootViewController: passcodeChangeViewController)
-    navigationController.modalPresentationStyle = .CurrentContext
+    navigationController.modalPresentationStyle = .currentContext
     
-    presentingViewController.presentViewController(navigationController, animated: true, completion: nil)
+    presentingViewController.present(navigationController, animated: true, completion: nil)
 }
 
-public func deletePasscode(presentingViewController presentingViewController: UIViewController, currentPasscode: String, completion: (success: Bool) -> Void) {
+public func deletePasscode(presentingViewController: UIViewController, currentPasscode: String, completion: @escaping (_ success: Bool) -> Void) {
     let passcodeDeletionViewController = PasscodeDeletionViewController()
     passcodeDeletionViewController.currentPasscode = currentPasscode
     passcodeDeletionViewController.completionHandler = completion
     
     let navigationController = UINavigationController(rootViewController: passcodeDeletionViewController)
-    navigationController.modalPresentationStyle = .CurrentContext
+    navigationController.modalPresentationStyle = .currentContext
     
-    presentingViewController.presentViewController(navigationController, animated: true, completion: nil)
+    presentingViewController.present(navigationController, animated: true, completion: nil)
 }
 
 public func clearState() {

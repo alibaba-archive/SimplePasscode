@@ -17,19 +17,19 @@ class PaddingLabel: UILabel {
     }
     
     convenience override init(frame: CGRect) {
-        self.init(padding: UIEdgeInsetsZero)
+        self.init(padding: UIEdgeInsets.zero)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func drawTextInRect(rect: CGRect) {
-        super.drawTextInRect(UIEdgeInsetsInsetRect(rect, padding))
+    override func drawText(in rect: CGRect) {
+        super.drawText(in: UIEdgeInsetsInsetRect(rect, padding))
     }
     
-    override func intrinsicContentSize() -> CGSize {
-        var contentSize = super.intrinsicContentSize()
+    override var intrinsicContentSize : CGSize {
+        var contentSize = super.intrinsicContentSize
         
         contentSize.width += padding.left + padding.right
         contentSize.height += padding.top + padding.bottom
@@ -37,7 +37,7 @@ class PaddingLabel: UILabel {
         return contentSize
     }
     
-    override func sizeThatFits(size: CGSize) -> CGSize {
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
         let sizeToFit = CGSize(width: size.width - padding.left - padding.right, height: size.height - padding.top - padding.bottom)
         
         var targetSize = super.sizeThatFits(sizeToFit)

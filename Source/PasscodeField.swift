@@ -9,19 +9,19 @@
 import UIKit
 
 @objc protocol PasscodeFieldDelegate {
-    func passcodeField(passcodeField: PasscodeField, shouldInsertText text: String) -> Bool
-    func passcodeField(passcodeField: PasscodeField, shouldDeleteBackwardText text: String) -> Bool
+    func passcodeField(_ passcodeField: PasscodeField, shouldInsertText text: String) -> Bool
+    func passcodeField(_ passcodeField: PasscodeField, shouldDeleteBackwardText text: String) -> Bool
 }
 
 class PasscodeField: UIControl {
     // MARK: - Private Properties
-    private let dotSize = CGSize(width: 18, height: 18)
-    private let dotSpacing: CGFloat = 25
-    private let lineHeight: CGFloat = 3
-    private let symbolColor = UIColor.blackColor()
+    fileprivate let dotSize = CGSize(width: 18, height: 18)
+    fileprivate let dotSpacing: CGFloat = 25
+    fileprivate let lineHeight: CGFloat = 3
+    fileprivate let symbolColor = UIColor.black
     
-    private var _passcode = ""
-    private let nonDigitRegex = try! NSRegularExpression(pattern: "[^0-9]+", options: [])
+    fileprivate var _passcode = ""
+    fileprivate let nonDigitRegex = try! NSRegularExpression(pattern: "[^0-9]+", options: [])
     
     // MARK: - Public Properties
     let passcodeLength: Int
@@ -33,7 +33,7 @@ class PasscodeField: UIControl {
         
         set {
             if (newValue.characters.count > passcodeLength) {
-                _passcode = newValue.substringToIndex(newValue.startIndex.advancedBy(passcodeLength))
+                _passcode = newValue.substring(to: newValue.characters.index(newValue.startIndex, offsetBy: passcodeLength))
             } else {
                 _passcode = newValue
             }
@@ -71,47 +71,47 @@ class PasscodeField: UIControl {
     }
     
     // MARK: - Common Initialization Logic
-    private func setup() {
-        backgroundColor = UIColor.clearColor()
+    fileprivate func setup() {
+        backgroundColor = UIColor.clear
         
-        addTarget(self, action: #selector(self.didTouchUpInside(_:)), forControlEvents: .TouchUpInside)
+        addTarget(self, action: #selector(self.didTouchUpInside(_:)), for: .touchUpInside)
     }
     
     // MARK: - Autolayout
-    override func intrinsicContentSize() -> CGSize {
+    override var intrinsicContentSize : CGSize {
         return CGSize(width: CGFloat(passcodeLength) * dotSize.width + (CGFloat(passcodeLength) - 1) * dotSpacing, height: dotSize.height)
     }
     
     // MARK: - UIResponder
-    override func canBecomeFirstResponder() -> Bool {
-        return self.enabled
+    override var canBecomeFirstResponder : Bool {
+        return self.isEnabled
     }
     
     // MARK: - Action Handlers
-    func didTouchUpInside(sender: AnyObject) {
+    func didTouchUpInside(_ sender: AnyObject) {
         becomeFirstResponder()
     }
     
     // MARK: - Drawing
-    override func drawRect(rect: CGRect) {
-        let canvasSize = intrinsicContentSize()
+    override func draw(_ rect: CGRect) {
+        let canvasSize = intrinsicContentSize
         
         let origin = CGPoint(x: rect.midX - canvasSize.width / 2, y: rect.midY - canvasSize.height / 2)
         
         var currentPoint = origin
         
         let context = UIGraphicsGetCurrentContext()!
-        CGContextSetFillColorWithColor(context, symbolColor.CGColor)
+        context.setFillColor(symbolColor.cgColor)
         
         for i in 0..<passcodeLength {
             if i < _passcode.characters.count {
                 // Draw circle
                 let circleFrame = CGRect(x: currentPoint.x, y: currentPoint.y, width: dotSize.width, height: dotSize.height)
-                CGContextFillEllipseInRect(context, circleFrame)
+                context.fillEllipse(in: circleFrame)
             } else {
                 // Draw line
                 let lineFrame = CGRect(x: currentPoint.x, y: currentPoint.y + floor((dotSize.height - lineHeight) / 2), width: dotSize.width, height: lineHeight)
-                CGContextFillRect(context, lineFrame)
+                context.fill(lineFrame)
             }
             
             currentPoint.x += dotSize.width + dotSpacing
@@ -121,14 +121,14 @@ class PasscodeField: UIControl {
 
 // MARK: - UIKeyInput
 extension PasscodeField: UIKeyInput {
-    func hasText() -> Bool {
+    var hasText : Bool {
         return _passcode.characters.count > 0
     }
     
-    func insertText(text: String) {
-        let filteredtext = nonDigitRegex.stringByReplacingMatchesInString(text, options: [], range: NSRange(location: 0, length: text.characters.count), withTemplate: "")
+    func insertText(_ text: String) {
+        let filteredtext = nonDigitRegex.stringByReplacingMatches(in: text, options: [], range: NSRange(location: 0, length: text.characters.count), withTemplate: "")
         
-        guard enabled && filteredtext.characters.count > 0 else {
+        guard isEnabled && filteredtext.characters.count > 0 else {
             return
         }
 
@@ -142,11 +142,11 @@ extension PasscodeField: UIKeyInput {
         
         passcode = _passcode + filteredtext
         
-        sendActionsForControlEvents(.EditingChanged)
+        sendActions(for: .editingChanged)
     }
     
     func deleteBackward() {
-        guard enabled && _passcode.characters.count > 0 else {
+        guard isEnabled && _passcode.characters.count > 0 else {
             return
         }
         
@@ -154,14 +154,14 @@ extension PasscodeField: UIKeyInput {
             return
         }
         
-        passcode = _passcode.substringToIndex(_passcode.endIndex.predecessor())
+        passcode = _passcode.substring(to: _passcode.characters.index(before: _passcode.endIndex))
         
-        sendActionsForControlEvents(.EditingChanged)
+        sendActions(for: .editingChanged)
     }
     
     var keyboardType: UIKeyboardType {
         get {
-            return .NumberPad
+            return .numberPad
         }
         set {
             // Do nothing
@@ -170,7 +170,7 @@ extension PasscodeField: UIKeyInput {
     
     var autocorrectionType: UITextAutocorrectionType {
         get {
-            return .No
+            return .no
         }
         set {
             // Do nothing
@@ -179,7 +179,7 @@ extension PasscodeField: UIKeyInput {
     
     var spellCheckingType: UITextSpellCheckingType {
         get {
-            return .No
+            return .no
         }
         set {
             // Do nothing
@@ -194,7 +194,7 @@ extension PasscodeField: UIKeyInput {
     
     var keyboardAppearance: UIKeyboardAppearance {
         get {
-            return .Default
+            return .default
         }
         set {
             // Do nothing

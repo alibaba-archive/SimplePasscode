@@ -10,22 +10,22 @@ import UIKit
 import SnapKit
 
 protocol NumPadViewDelegate {
-    func numPadView(view: NumPadView, didTapDigit digit: Int)
+    func numPadView(_ view: NumPadView, didTapDigit digit: Int)
 }
 
-public class NumPadView: UIView {
+open class NumPadView: UIView {
     // MARK: - Private Properties
-    private var rowContainerViews: [UIView] = []
-    private var horizPadding: CGFloat {
-        if traitCollection.horizontalSizeClass == .Regular && traitCollection.verticalSizeClass == .Regular {
+    fileprivate var rowContainerViews: [UIView] = []
+    fileprivate var horizPadding: CGFloat {
+        if traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular {
             return 24
         } else {
             return 20
         }
     }
     
-    private var vertPadding: CGFloat {
-        if traitCollection.horizontalSizeClass == .Regular && traitCollection.verticalSizeClass == .Regular {
+    fileprivate var vertPadding: CGFloat {
+        if traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular {
             return 19
         } else {
             return 13
@@ -49,18 +49,18 @@ public class NumPadView: UIView {
     }
     
     // MARK: - UI Config
-    private func setupUI() {
+    fileprivate func setupUI() {
         // Layout digits 0 through 8
         for i in 0..<4 {
             let rowContainerView = UIView()
             rowContainerViews.append(rowContainerView)
             
             addSubview(rowContainerView)
-            rowContainerView.snp_makeConstraints { make in
+            rowContainerView.snp.makeConstraints { make in
                 if i == 0 {
                     make.top.equalTo(self)
                 } else {
-                    make.top.equalTo(rowContainerViews[i - 1].snp_bottom).offset(vertPadding)
+                    make.top.equalTo(rowContainerViews[i - 1].snp.bottom).offset(vertPadding)
                 }
                 
                 if i == 3 {
@@ -72,11 +72,11 @@ public class NumPadView: UIView {
                 }
             }
             
-            var digitRange: Range<Int>
+            var digitRange: CountableRange<Int>
             if i < 3 {
                 digitRange = (3 * i + 1)..<(3 * i + 4) // (1, 2, 3), (4, 5, 6), (7, 8, 9)
             } else {
-                digitRange = 0...0
+                digitRange = 0..<1
             }
             
             var previousButton: DigitButton!
@@ -85,23 +85,23 @@ public class NumPadView: UIView {
                 let digitButton = DigitButton(digit: j)
                 rowContainerView.addSubview(digitButton)
                 
-                digitButton.snp_makeConstraints { make in
+                digitButton.snp.makeConstraints { make in
                     if j == digitRange.startIndex {
                         make.left.equalTo(rowContainerView)
                         make.top.equalTo(rowContainerView)
                         make.bottom.equalTo(rowContainerView)
                     } else {
-                        make.left.equalTo(previousButton.snp_right).offset(horizPadding)
+                        make.left.equalTo(previousButton.snp.right).offset(horizPadding)
                         make.top.equalTo(previousButton)
                         make.bottom.equalTo(previousButton)
                     }
                     
-                    if j == digitRange.endIndex.predecessor() {
+                    if j == digitRange.index(before: digitRange.endIndex) {
                         make.right.equalTo(rowContainerView)
                     }
                 }
                 
-                digitButton.addTarget(self, action: #selector(self.digitButtonTapped(_:)), forControlEvents: .TouchUpInside)
+                digitButton.addTarget(self, action: #selector(self.digitButtonTapped(_:)), for: .touchUpInside)
                 
                 previousButton = digitButton
             }
@@ -109,7 +109,7 @@ public class NumPadView: UIView {
     }
     
     // MARK: - Action Handlers
-    func digitButtonTapped(digitButton: DigitButton) {
+    func digitButtonTapped(_ digitButton: DigitButton) {
         delegate?.numPadView(self, didTapDigit: digitButton.digit)
     }
 }

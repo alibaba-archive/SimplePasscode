@@ -13,7 +13,7 @@ class InputCirclesView: UIView {
     // MARK: - Properties
     let passcodeLength: Int
     
-    private var circleViews: [CircleView] = []
+    fileprivate var circleViews: [CircleView] = []
     
     // MARK: - Init & Deinit
     init(passcodeLength: Int) {
@@ -34,7 +34,7 @@ class InputCirclesView: UIView {
     }
     
     // MARK: - UI Config
-    private func setupUI() {        
+    fileprivate func setupUI() {        
         for i in 0..<passcodeLength {
             let circleView = CircleView()
             addSubview(circleView)
@@ -57,7 +57,7 @@ class InputCirclesView: UIView {
         }
     }
     
-    func setFilled(filled: Bool, atIndex index: Int) {
+    func setFilled(_ filled: Bool, atIndex index: Int) {
         precondition((0..<passcodeLength).contains(index), "index should be non-negative and less than passcodeLength")
         
         circleViews[index].filled = filled

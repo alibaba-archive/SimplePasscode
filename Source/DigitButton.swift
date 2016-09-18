@@ -15,7 +15,7 @@ class DigitButton: UIButton {
     var digitLabel: UILabel!
     
     var diameter: CGFloat {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             return 82
         } else {
             return 75
@@ -23,10 +23,10 @@ class DigitButton: UIButton {
     }
     
     var digitFont: UIFont {
-        if traitCollection.verticalSizeClass == .Regular && traitCollection.horizontalSizeClass == .Regular {
-            return UIFont.systemFontOfSize(41)
+        if traitCollection.verticalSizeClass == .regular && traitCollection.horizontalSizeClass == .regular {
+            return UIFont.systemFont(ofSize: 41)
         } else {
-            return UIFont.systemFontOfSize(36)
+            return UIFont.systemFont(ofSize: 36)
         }
     }
     
@@ -50,16 +50,16 @@ class DigitButton: UIButton {
     }
     
     // MARK: - UI Config
-    private func setupUI() {
+    fileprivate func setupUI() {
         tintColor = UIColor.customTintColor
         
         layer.cornerRadius = diameter / 2
         layer.borderWidth = 1
-        layer.borderColor = tintColor.CGColor
+        layer.borderColor = tintColor.cgColor
         
         digitLabel = UILabel()
         digitLabel.text = "\(digit)"
-        digitLabel.textAlignment = .Center
+        digitLabel.textAlignment = .center
         digitLabel.font = digitFont
         digitLabel.textColor = tintColor
         
@@ -70,20 +70,20 @@ class DigitButton: UIButton {
         
     }
     
-    override var highlighted: Bool {
+    override var isHighlighted: Bool {
         didSet {
-            if highlighted {
+            if isHighlighted {
                 backgroundColor = tintColor
-                digitLabel.textColor = UIColor.whiteColor()
+                digitLabel.textColor = UIColor.white
             } else {
-                backgroundColor = UIColor.clearColor()
+                backgroundColor = UIColor.clear
                 digitLabel.textColor = tintColor
             }
         }
     }
     
     // MARK: - AutoLayout
-    override func intrinsicContentSize() -> CGSize {
+    override var intrinsicContentSize : CGSize {
         return CGSize(width: diameter, height: diameter)
     } 
 }

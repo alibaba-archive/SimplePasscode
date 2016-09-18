@@ -10,58 +10,58 @@ import UIKit
 import SnapKit
 
 @objc protocol PasscodeInputViewDelegate {
-    func passcodeInputView(inputView: PasscodeInputView, didFinishWithPasscode passcode: String)
+    func passcodeInputView(_ inputView: PasscodeInputView, didFinishWithPasscode passcode: String)
 }
 
 class PasscodeInputView: UIView {
     // MARK: - Private Properties
     let passcodeLength: Int
     
-    private(set) lazy var passcodeField: PasscodeField! = {
+    fileprivate(set) lazy var passcodeField: PasscodeField! = {
         let passcodeField = PasscodeField(length: self.passcodeLength, frame: .zero)
         
         passcodeField.delegate = self
-        passcodeField.addTarget(self, action: #selector(self.passcodeFieldEditingChanged(_:)), forControlEvents: .EditingChanged)
+        passcodeField.addTarget(self, action: #selector(self.passcodeFieldEditingChanged(_:)), for: .editingChanged)
         
         return passcodeField
     }()
     
-    private lazy var titleLabel: UILabel! = {
+    fileprivate lazy var titleLabel: UILabel! = {
         let titleLabel = UILabel()
         
-        titleLabel.font = UIFont.boldSystemFontOfSize(15)
-        titleLabel.textAlignment = .Center
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        titleLabel.textAlignment = .center
         
         return titleLabel
     }()
     
-    private lazy var messageLabel: UILabel! = {
+    fileprivate lazy var messageLabel: UILabel! = {
         let messageLabel = UILabel()
         
-        messageLabel.font = UIFont.systemFontOfSize(15)
-        messageLabel.textAlignment = .Center
+        messageLabel.font = UIFont.systemFont(ofSize: 15)
+        messageLabel.textAlignment = .center
         messageLabel.numberOfLines = 0
-        messageLabel.lineBreakMode = .ByWordWrapping
+        messageLabel.lineBreakMode = .byWordWrapping
         
-        messageLabel.hidden = true
+        messageLabel.isHidden = true
         
         return messageLabel
     }()
     
-    private lazy var errorLabel: PaddingLabel! = {
+    fileprivate lazy var errorLabel: PaddingLabel! = {
         let errorLabel = PaddingLabel(padding: UIEdgeInsets(top: 2, left: 10, bottom: 2, right: 10))
         
-        errorLabel.font = UIFont.systemFontOfSize(15)
-        errorLabel.textColor = UIColor.whiteColor()
+        errorLabel.font = UIFont.systemFont(ofSize: 15)
+        errorLabel.textColor = UIColor.white
         errorLabel.backgroundColor = UIColor(red: 0.63, green: 0.2, blue: 0.13, alpha: 1)
-        errorLabel.textAlignment = .Center
+        errorLabel.textAlignment = .center
         errorLabel.numberOfLines = 0
-        errorLabel.lineBreakMode = .ByWordWrapping
+        errorLabel.lineBreakMode = .byWordWrapping
         
         errorLabel.layer.cornerRadius = 10.0
         errorLabel.clipsToBounds = true
         
-        errorLabel.hidden = true
+        errorLabel.isHidden = true
         
         return errorLabel
     }()
@@ -70,7 +70,7 @@ class PasscodeInputView: UIView {
     weak var delegate: PasscodeInputViewDelegate?
     var enabled = true {
         didSet {
-            passcodeField.enabled = enabled
+            passcodeField.isEnabled = enabled
         }
     }
     
@@ -100,8 +100,8 @@ class PasscodeInputView: UIView {
         set {
             messageLabel.text = newValue
             
-            messageLabel.hidden = false
-            errorLabel.hidden = true
+            messageLabel.isHidden = false
+            errorLabel.isHidden = true
         }
     }
     
@@ -112,8 +112,8 @@ class PasscodeInputView: UIView {
         set {
             errorLabel.text = newValue
             
-            errorLabel.hidden = false
-            messageLabel.hidden = true
+            errorLabel.isHidden = false
+            messageLabel.isHidden = true
         }
     }
     
@@ -137,7 +137,7 @@ class PasscodeInputView: UIView {
     }
     
     // MARK: - Common Initialization Logic
-    private func setup() {
+    fileprivate func setup() {
         addSubview(passcodeField)
         addSubview(titleLabel)
         addSubview(messageLabel)
@@ -146,55 +146,55 @@ class PasscodeInputView: UIView {
     
     // MARK: - Autolayout
     override func updateConstraints() {
-        passcodeField.snp_remakeConstraints { make in
+        passcodeField.snp.remakeConstraints { make in
             make.center.equalTo(self)
         }
         
-        titleLabel.snp_remakeConstraints { make in
+        titleLabel.snp.remakeConstraints { make in
             make.left.greaterThanOrEqualTo(self).offset(15)
             make.right.lessThanOrEqualTo(self).offset(-15)
             make.centerX.equalTo(self)
-            make.bottom.equalTo(passcodeField.snp_top).offset(-30)
+            make.bottom.equalTo(passcodeField.snp.top).offset(-30)
         }
         
-        messageLabel.snp_remakeConstraints { make in
+        messageLabel.snp.remakeConstraints { make in
             make.left.greaterThanOrEqualTo(self).offset(15)
             make.right.lessThanOrEqualTo(self).offset(-15)
             make.centerX.equalTo(self)
-            make.top.equalTo(passcodeField.snp_bottom).offset(30)
+            make.top.equalTo(passcodeField.snp.bottom).offset(30)
         }
         
-        errorLabel.snp_remakeConstraints { make in
+        errorLabel.snp.remakeConstraints { make in
             make.left.greaterThanOrEqualTo(self).offset(15)
             make.right.lessThanOrEqualTo(self).offset(-15)
             make.centerX.equalTo(self)
-            make.top.equalTo(passcodeField.snp_bottom).offset(30)
+            make.top.equalTo(passcodeField.snp.bottom).offset(30)
         }
         
         super.updateConstraints()
     }
     
     // MARK: - UIResponder
-    override func canBecomeFirstResponder() -> Bool {
-        return enabled && passcodeField.canBecomeFirstResponder()
+    override var canBecomeFirstResponder : Bool {
+        return enabled && passcodeField.canBecomeFirstResponder
     }
     
     override func becomeFirstResponder() -> Bool {
         return enabled && passcodeField.becomeFirstResponder()
     }
     
-    override func canResignFirstResponder() -> Bool {
-        return passcodeField.canResignFirstResponder()
+    override var canResignFirstResponder : Bool {
+        return passcodeField.canResignFirstResponder
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        super.touchesBegan(touches, withEvent: event)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
         
         passcodeField.becomeFirstResponder()
     }
     
     // MARK: - Action Handlers
-    func passcodeFieldEditingChanged(sender: AnyObject) {
+    func passcodeFieldEditingChanged(_ sender: AnyObject) {
         if passcodeField.passcode.characters.count == passcodeField.passcodeLength {
             delegate?.passcodeInputView(self, didFinishWithPasscode: passcodeField.passcode)
         }
@@ -203,11 +203,11 @@ class PasscodeInputView: UIView {
 
 // MARK: - PasscodeField Delegate
 extension PasscodeInputView: PasscodeFieldDelegate {
-    func passcodeField(passcodeField: PasscodeField, shouldInsertText text: String) -> Bool {
+    func passcodeField(_ passcodeField: PasscodeField, shouldInsertText text: String) -> Bool {
         return enabled
     }
     
-    func passcodeField(passcodeField: PasscodeField, shouldDeleteBackwardText text: String) -> Bool {
+    func passcodeField(_ passcodeField: PasscodeField, shouldDeleteBackwardText text: String) -> Bool {
         return enabled
     }
 }

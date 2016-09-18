@@ -12,28 +12,28 @@ import LocalAuthentication
 
 class AuthenticationViewController: UIViewController {
     // MARK: - Private Properties
-    private lazy var promptLabel: UILabel! = {
+    fileprivate lazy var promptLabel: UILabel! = {
         let promptLabel = UILabel()
         
-        if self.traitCollection.horizontalSizeClass == .Regular && self.traitCollection.verticalSizeClass == .Regular {
-            promptLabel.font = UIFont.systemFontOfSize(22)
+        if self.traitCollection.horizontalSizeClass == .regular && self.traitCollection.verticalSizeClass == .regular {
+            promptLabel.font = UIFont.systemFont(ofSize: 22)
         } else {
-            promptLabel.font = UIFont.systemFontOfSize(18)
+            promptLabel.font = UIFont.systemFont(ofSize: 18)
         }
         
-        promptLabel.text = NSLocalizedString("Enter Passcode", bundle: NSBundle(forClass: self.dynamicType), comment: "Enter Passcode")
-        promptLabel.textAlignment = .Center
+        promptLabel.text = NSLocalizedString("Enter Passcode", bundle: Bundle(for: type(of: self)), comment: "Enter Passcode")
+        promptLabel.textAlignment = .center
         
         return promptLabel
     }()
     
-    private lazy var inputCirclesView: InputCirclesView! = {
+    fileprivate lazy var inputCirclesView: InputCirclesView! = {
         let inputCirclesView = InputCirclesView(passcodeLength: SimplePasscode.passcodeLength)
         
         return inputCirclesView
     }()
     
-    private lazy var numPadView: NumPadView! = {
+    fileprivate lazy var numPadView: NumPadView! = {
         let numPadView = NumPadView()
         
         numPadView.delegate = self
@@ -41,22 +41,22 @@ class AuthenticationViewController: UIViewController {
         return numPadView
     }()
     
-    private lazy var deleteButton: UIButton! = {
-        let deleteButton = UIButton(type: .System)
+    fileprivate lazy var deleteButton: UIButton! = {
+        let deleteButton = UIButton(type: .system)
         
-        deleteButton.setTitle(NSLocalizedString("Delete", bundle: NSBundle(forClass: self.dynamicType), comment: "Delete"), forState: .Normal)
-        deleteButton.titleLabel?.font = UIFont.systemFontOfSize(16)
-        deleteButton.addTarget(self, action: #selector(self.deleteButtonTapped), forControlEvents: .TouchUpInside)
+        deleteButton.setTitle(NSLocalizedString("Delete", bundle: Bundle(for: type(of: self)), comment: "Delete"), for: UIControlState())
+        deleteButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        deleteButton.addTarget(self, action: #selector(self.deleteButtonTapped), for: .touchUpInside)
         
         return deleteButton
     }()
     
-    private var firstAppear = true
+    fileprivate var firstAppear = true
     
     // MARK: - Public Properties
     var currentPasscode: String!
     var inputtedPasscode = ""
-    var completionHandler: ((success: Bool) -> Void)?
+    var completionHandler: ((_ success: Bool) -> Void)?
     
     // MARK: - VC Life Cycle
     override func viewDidLoad() {
@@ -65,7 +65,7 @@ class AuthenticationViewController: UIViewController {
         setupUI()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if firstAppear {
@@ -75,14 +75,14 @@ class AuthenticationViewController: UIViewController {
     }
     
     // MARK: - UI Config
-    private func setupUI() {
-        view.backgroundColor = UIColor.whiteColor()
+    fileprivate func setupUI() {
+        view.backgroundColor = UIColor.white
         view.tintColor = UIColor.customTintColor
         
         let canvasView = UIView()
         view.addSubview(canvasView)
-        canvasView.snp_makeConstraints { (make) in
-            make.top.equalTo(snp_topLayoutGuideBottom)
+        canvasView.snp.makeConstraints { (make) in
+            make.top.equalTo(topLayoutGuide.snp.bottom)
             make.left.equalTo(view)
             make.right.equalTo(view)
             make.bottom.equalTo(view)
@@ -90,35 +90,35 @@ class AuthenticationViewController: UIViewController {
         
         let containerView = UIView()
         canvasView.addSubview(containerView)
-        containerView.snp_makeConstraints { make in
+        containerView.snp.makeConstraints { make in
             make.center.equalTo(canvasView)
         }
         
         do {
             containerView.addSubview(promptLabel)
             promptLabel.textColor = promptLabel.tintColor
-            promptLabel.snp_makeConstraints { make in
+            promptLabel.snp.makeConstraints { make in
                 make.top.equalTo(containerView)
                 make.left.equalTo(containerView)
                 make.right.equalTo(containerView)
             }
             
             containerView.addSubview(inputCirclesView)
-            inputCirclesView.snp_makeConstraints { make in
-                make.top.equalTo(promptLabel.snp_bottom).offset(20)
+            inputCirclesView.snp.makeConstraints { make in
+                make.top.equalTo(promptLabel.snp.bottom).offset(20)
                 make.centerX.equalTo(containerView)
             }
             
             containerView.addSubview(numPadView)
-            numPadView.snp_makeConstraints { make in
-                make.top.equalTo(inputCirclesView.snp_bottom).offset(20)
+            numPadView.snp.makeConstraints { make in
+                make.top.equalTo(inputCirclesView.snp.bottom).offset(20)
                 make.left.equalTo(containerView)
                 make.right.equalTo(containerView)
             }
             
             containerView.addSubview(deleteButton)
-            deleteButton.snp_makeConstraints { make in
-                make.top.equalTo(numPadView.snp_bottom)
+            deleteButton.snp.makeConstraints { make in
+                make.top.equalTo(numPadView.snp.bottom)
                 make.right.equalTo(containerView)
                 make.bottom.equalTo(containerView)
             }
@@ -126,18 +126,18 @@ class AuthenticationViewController: UIViewController {
     }
     
     // MARK: - Overriden UI Behavior
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-            return .All
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            return .all
         } else {
-            return .Portrait
+            return .portrait
         }
     }
     
     // MARK: - Action Handlers
     func deleteButtonTapped() {
         if inputtedPasscode.characters.count > 0 {
-            inputtedPasscode.removeAtIndex(inputtedPasscode.endIndex.predecessor())
+            inputtedPasscode.remove(at: inputtedPasscode.characters.index(before: inputtedPasscode.endIndex))
             inputCirclesView.setFilled(false, atIndex: inputtedPasscode.characters.count)
         }
     }
@@ -145,9 +145,9 @@ class AuthenticationViewController: UIViewController {
     func authenticateUsingTouchID() {
         if allowTouchID {
             let authenticationContext = LAContext()
-            let authenticationReason = NSLocalizedString("Verify your identity to continue", bundle: NSBundle(forClass: self.dynamicType), comment: "Verify your identity to continue")
-            authenticationContext.evaluatePolicy(.DeviceOwnerAuthenticationWithBiometrics, localizedReason: authenticationReason, reply: { (success, error) in
-                dispatch_async(dispatch_get_main_queue()) {
+            let authenticationReason = NSLocalizedString("Verify your identity to continue", bundle: Bundle(for: type(of: self)), comment: "Verify your identity to continue")
+            authenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: authenticationReason, reply: { (success, error) in
+                DispatchQueue.main.async {
                     if success {
                         self.authenticationComplete(success: true)
                     }
@@ -157,19 +157,19 @@ class AuthenticationViewController: UIViewController {
     }
     
     // MARK: - Authentication Result
-    private func authenticationComplete(success success: Bool) {
+    fileprivate func authenticationComplete(success: Bool) {
         if success {
             FreezeManager.clearState()
-            completionHandler?(success: true)
+            completionHandler?(true)
         } else {
             // User should be forced to sign out when authentication fails
-            completionHandler?(success: false)
+            completionHandler?(false)
         }
     }
 }
 
 extension AuthenticationViewController: NumPadViewDelegate {
-    func numPadView(view: NumPadView, didTapDigit digit: Int) {
+    func numPadView(_ view: NumPadView, didTapDigit digit: Int) {
         guard inputtedPasscode.characters.count < currentPasscode.characters.count else {
             return
         }
@@ -178,9 +178,9 @@ extension AuthenticationViewController: NumPadViewDelegate {
         inputCirclesView.setFilled(true, atIndex: inputtedPasscode.characters.count - 1)
         
         if inputtedPasscode.characters.count == currentPasscode.characters.count {
-            deleteButton.enabled = false
+            deleteButton.isEnabled = false
             
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.3 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(0.3 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) {
                 if self.inputtedPasscode != self.currentPasscode {
                     FreezeManager.incrementPasscodeFailure { reachThreshold in
                         if reachThreshold {
@@ -195,7 +195,7 @@ extension AuthenticationViewController: NumPadViewDelegate {
                     self.authenticationComplete(success: true)
                 }
                 
-                self.deleteButton.enabled = true
+                self.deleteButton.isEnabled = true
             }
         }
     }
