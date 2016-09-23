@@ -186,12 +186,6 @@ extension PasscodeField: UIKeyInput {
         }
     }
     
-    var secureTextEntry: Bool {
-        get {
-            return true
-        }
-    }
-    
     var keyboardAppearance: UIKeyboardAppearance {
         get {
             return .default

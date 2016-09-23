@@ -53,7 +53,7 @@ class PasscodeCreationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        shiftView.currentView.becomeFirstResponder()
+        let _ = shiftView.currentView.becomeFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -77,7 +77,7 @@ class PasscodeCreationViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Cancel", bundle: Bundle(for: type(of: self)), comment: "Cancel"), style: .plain, target: self, action: #selector(self.cancelButtonTapped))
         
         view.addSubview(shiftView)
-        shiftView.snp_remakeConstraints { make in
+        shiftView.snp.remakeConstraints { make in
             make.top.equalTo(view).offset(64)
             make.left.equalTo(view)
             make.right.equalTo(view)
@@ -142,7 +142,7 @@ class PasscodeCreationViewController: UIViewController {
         }
         
         UIView.animate(withDuration: animationDuration, delay: 0, options: UIViewAnimationOptions(rawValue: animationCurve << 16), animations: {
-            self.shiftView.snp_remakeConstraints { make in
+            self.shiftView.snp.remakeConstraints { make in
                 make.top.equalTo(self.topLayoutGuide.snp.bottom)
                 make.left.equalTo(self.view)
                 make.right.equalTo(self.view)
@@ -164,7 +164,7 @@ extension PasscodeCreationViewController: PasscodeInputViewDelegate {
         if inputView == shiftView.managedSubViews.first {
             firstPasscode = passcode
             shiftView.managedSubViews.last!.passcode = ""
-            shiftView.managedSubViews.last!.becomeFirstResponder()
+            let _ = shiftView.managedSubViews.last!.becomeFirstResponder()
             
             shiftView.shift(.forward)
         } else {
@@ -173,7 +173,7 @@ extension PasscodeCreationViewController: PasscodeInputViewDelegate {
             if secondPasscode != firstPasscode {
                 shiftView.managedSubViews.first!.passcode = ""
                 updateInputView()
-                shiftView.managedSubViews.first!.becomeFirstResponder()
+                let _ = shiftView.managedSubViews.first!.becomeFirstResponder()
                 
                 shiftView.shift(.backward)
             } else {

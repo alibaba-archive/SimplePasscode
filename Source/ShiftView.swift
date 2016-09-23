@@ -48,17 +48,17 @@ class ShiftView<T: UIView>: UIView {
             addSubview(view)
         }
         
-        currentView.snp_remakeConstraints { make in
+        currentView.snp.remakeConstraints { make in
             make.edges.equalTo(self)
         }
         
         var previousView = currentView
         for view in managedSubViews[managedSubViews.indices.suffix(from: (managedSubViews.startIndex + 1))] {
-            view.snp_remakeConstraints { make in
+            view.snp.remakeConstraints { make in
                 make.top.equalTo(previousView)
                 make.bottom.equalTo(previousView)
                 make.width.equalTo(previousView)
-                make.left.equalTo(previousView.snp_right)
+                make.left.equalTo(previousView.snp.right)
             }
             
             previousView = view
@@ -79,14 +79,14 @@ class ShiftView<T: UIView>: UIView {
                 let nextView = managedSubViews[(currentIndex + 1)]
                 
                 UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions(), animations: { 
-                    self.currentView.snp_remakeConstraints { make in
+                    self.currentView.snp.remakeConstraints { make in
                         make.top.equalTo(nextView)
                         make.bottom.equalTo(nextView)
                         make.width.equalTo(nextView)
-                        make.right.equalTo(nextView.snp_left)
+                        make.right.equalTo(nextView.snp.left)
                     }
                     
-                    nextView.snp_remakeConstraints { make in
+                    nextView.snp.remakeConstraints { make in
                         make.edges.equalTo(self)
                     }
                     
@@ -103,14 +103,14 @@ class ShiftView<T: UIView>: UIView {
                 let previousView = managedSubViews[(currentIndex - 1)]
                 
                 UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions(), animations: { 
-                    self.currentView.snp_remakeConstraints { make in
+                    self.currentView.snp.remakeConstraints { make in
                         make.top.equalTo(previousView)
                         make.bottom.equalTo(previousView)
                         make.width.equalTo(previousView)
-                        make.left.equalTo(previousView.snp_right)
+                        make.left.equalTo(previousView.snp.right)
                     }
                     
-                    previousView.snp_remakeConstraints { make in
+                    previousView.snp.remakeConstraints { make in
                         make.edges.equalTo(self)
                     }
                     

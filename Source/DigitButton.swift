@@ -64,7 +64,7 @@ class DigitButton: UIButton {
         digitLabel.textColor = tintColor
         
         addSubview(digitLabel)
-        digitLabel.snp_makeConstraints { make in
+        digitLabel.snp.makeConstraints { make in
             make.center.equalTo(self)
         }
         

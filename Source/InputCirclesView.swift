@@ -40,13 +40,13 @@ class InputCirclesView: UIView {
             addSubview(circleView)
             circleViews.append(circleView)
             
-            circleView.snp_makeConstraints { make in
+            circleView.snp.makeConstraints { make in
                 if i == 0 {
                     make.left.equalTo(self)
                     make.top.equalTo(self)
                     make.bottom.equalTo(self)
                 } else {
-                    make.left.equalTo(circleViews[i - 1].snp_right).offset(2 * circleView.diameter)
+                    make.left.equalTo(circleViews[i - 1].snp.right).offset(2 * circleView.diameter)
                     make.centerY.equalTo(self)
                 }
                 
