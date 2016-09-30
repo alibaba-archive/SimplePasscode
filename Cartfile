@@ -1,2 +1,2 @@
 github "SnapKit/SnapKit"
-github "malcommac/SwiftDate" "feature/swift-3.0"
+github "malcommac/SwiftDate"

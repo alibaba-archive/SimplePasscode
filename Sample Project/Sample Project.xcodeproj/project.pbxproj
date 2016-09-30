@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D42987A61CE171C400D6BE4E /* SimplePasscode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42987A51CE171C400D6BE4E /* SimplePasscode.framework */; };
-		D42987A71CE171C400D6BE4E /* SimplePasscode.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D42987A51CE171C400D6BE4E /* SimplePasscode.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D4434F5B1E12391600BB5B7C /* SimplePasscode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4434F5A1E12391600BB5B7C /* SimplePasscode.framework */; };
+		D4434F5C1E12391600BB5B7C /* SimplePasscode.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4434F5A1E12391600BB5B7C /* SimplePasscode.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D4AF676C1D47639B00F75346 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4AF676E1D47639B00F75346 /* Localizable.strings */; };
 		D4B097FC1CDF4385001AC22F /* SwiftDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B097FB1CDF4385001AC22F /* SwiftDate.framework */; };
 		D4BD7C601CDDF3C60021825D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BD7C5F1CDDF3C60021825D /* AppDelegate.swift */; };
@@ -45,7 +45,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D42987A71CE171C400D6BE4E /* SimplePasscode.framework in Embed Frameworks */,
+				D4434F5C1E12391600BB5B7C /* SimplePasscode.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,7 +53,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D42987A51CE171C400D6BE4E /* SimplePasscode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = SimplePasscode.framework; path = "/Users/zetasq/Library/Developer/Xcode/DerivedData/SimplePasscode-hbeypyfwreaugefqutlprdrgsqzq/Build/Products/Debug-iphoneos/SimplePasscode.framework"; sourceTree = "<absolute>"; };
+		D4434F5A1E12391600BB5B7C /* SimplePasscode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SimplePasscode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4AF676F1D47655E00F75346 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D4AF677D1D484D9C00F75346 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D4B097FB1CDF4385001AC22F /* SwiftDate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftDate.framework; path = ../Carthage/Build/iOS/SwiftDate.framework; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4B097FC1CDF4385001AC22F /* SwiftDate.framework in Frameworks */,
-				D42987A61CE171C400D6BE4E /* SimplePasscode.framework in Frameworks */,
+				D4434F5B1E12391600BB5B7C /* SimplePasscode.framework in Frameworks */,
 				D4BD7C911CDDF5670021825D /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,7 +104,7 @@
 		D4BD7C531CDDF3C60021825D = {
 			isa = PBXGroup;
 			children = (
-				D42987A51CE171C400D6BE4E /* SimplePasscode.framework */,
+				D4434F5A1E12391600BB5B7C /* SimplePasscode.framework */,
 				D4B097FB1CDF4385001AC22F /* SwiftDate.framework */,
 				D4BD7C8F1CDDF4F80021825D /* SnapKit.framework */,
 				D4BD7C5E1CDDF3C60021825D /* Sample Project */,

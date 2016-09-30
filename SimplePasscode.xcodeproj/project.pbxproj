@@ -246,10 +246,11 @@
 					D46092321CDD8AFC006C96E5 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = DHNJ8N28ZZ;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 					};
 					D460923C1CDD8AFD006C96E5 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -521,6 +522,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dia.SimplePasscodeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -531,6 +533,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dia.SimplePasscodeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
