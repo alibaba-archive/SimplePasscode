@@ -59,7 +59,8 @@ class PasscodeDeletionViewController: UIViewController {
     fileprivate func setupUI() {
         title = NSLocalizedString("Remove Passcode", bundle: Bundle(for: type(of: self)), comment: "Remove Passcode")
         view.backgroundColor = UIColor.backgroundColor
-        
+        extendedLayoutIncludesOpaqueBars = true
+
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Cancel", bundle: Bundle(for: type(of: self)), comment: "Cancel"), style: .plain, target: self, action: #selector(self.cancelButtonTapped))
         
         view.addSubview(passcodeInputView)

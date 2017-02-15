@@ -73,6 +73,7 @@ class PasscodeCreationViewController: UIViewController {
     fileprivate func setupUI() {
         title = NSLocalizedString("New Passcode", bundle: Bundle(for: type(of: self)), comment: "New Passcode")
         view.backgroundColor = UIColor.backgroundColor
+        extendedLayoutIncludesOpaqueBars = true
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Cancel", bundle: Bundle(for: type(of: self)), comment: "Cancel"), style: .plain, target: self, action: #selector(self.cancelButtonTapped))
         

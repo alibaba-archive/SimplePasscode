@@ -23,10 +23,13 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonTapped(_ sender: AnyObject) {
-        LockScreenManager.showLockScreen(passcode: "1111") { (authenticationSuccess) in
-            print(authenticationSuccess)
-            LockScreenManager.hideLockScreen()
+        SimplePasscode.createNewPasscode(presentingViewController: self) { newPasscode in
+            print(newPasscode)
         }
+//        LockScreenManager.showLockScreen(passcode: "1111") { (authenticationSuccess) in
+//            print(authenticationSuccess)
+//            LockScreenManager.hideLockScreen()
+//        }
     }
 }
 
