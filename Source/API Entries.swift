@@ -10,13 +10,14 @@ import UIKit
 import LocalAuthentication
 
 
+public var globalTintColor = UIColor.customTintColor
+
 // MARK: - Passcode Options
 var passcodeLength = 4
 var allowTouchID = true
 var maxPasscodeFailures = 6
 var firstFreezeTime = 60
 var secondFreezeTime = 60 * 5
-
 
 /**
  Call this method in applicationDidFinishLaunching(_:) to configure the options

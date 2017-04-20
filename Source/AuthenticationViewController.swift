@@ -77,7 +77,7 @@ class AuthenticationViewController: UIViewController {
     // MARK: - UI Config
     fileprivate func setupUI() {
         view.backgroundColor = UIColor.white
-        view.tintColor = UIColor.customTintColor
+        view.tintColor = globalTintColor
         
         let canvasView = UIView()
         view.addSubview(canvasView)

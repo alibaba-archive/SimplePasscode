@@ -22,7 +22,7 @@ class CircleView: UIView {
     }
     
     fileprivate func setupUI() {
-        tintColor = UIColor.customTintColor
+        tintColor = globalTintColor
         
         layer.cornerRadius = diameter / 2
         layer.borderWidth = 1
