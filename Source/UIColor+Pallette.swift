@@ -21,6 +21,10 @@ extension UIColor {
         return UIColor(rgb: 0xF4F4F4)
     }
     
+    static var errorRedColor: UIColor {
+        return UIColor(rgb: 0xFF4F3E)
+    }
+    
     static var customTintColor: UIColor {
         return UIColor(rgb: 0x03A9F4)
     }

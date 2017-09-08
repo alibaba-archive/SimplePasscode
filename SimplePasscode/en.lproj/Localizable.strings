@@ -48,3 +48,5 @@ Try again";
 /* Try again in 1 minute */
 "Try again in 1 minute" = "Try again in 1 minute";
 
+/* Wrong passcode. You can retry %ld more times */
+"Wrong passcode. You can retry %ld more times" = "Wrong passcode. You can retry %ld more times";

@@ -12,7 +12,7 @@ import LocalAuthentication
 
 class AuthenticationViewController: UIViewController {
     // MARK: - Private Properties
-    fileprivate lazy var promptLabel: UILabel! = {
+    fileprivate lazy var promptLabel: UILabel = {
         let promptLabel = UILabel()
         
         if self.traitCollection.horizontalSizeClass == .regular && self.traitCollection.verticalSizeClass == .regular {
@@ -27,13 +27,24 @@ class AuthenticationViewController: UIViewController {
         return promptLabel
     }()
     
-    fileprivate lazy var inputCirclesView: InputCirclesView! = {
+    fileprivate lazy var inputCirclesView: InputCirclesView = {
         let inputCirclesView = InputCirclesView(passcodeLength: SimplePasscode.passcodeLength)
         
         return inputCirclesView
     }()
     
-    fileprivate lazy var numPadView: NumPadView! = {
+    fileprivate lazy var errorPromptLabel: UILabel = {
+        let errorPromptLabel = UILabel()
+        
+        errorPromptLabel.text = " "
+        errorPromptLabel.font = UIFont.systemFont(ofSize: 14)
+        errorPromptLabel.textColor = UIColor.errorRedColor
+        errorPromptLabel.textAlignment = .center
+        
+        return errorPromptLabel
+    }()
+    
+    fileprivate lazy var numPadView: NumPadView = {
         let numPadView = NumPadView()
         
         numPadView.delegate = self
@@ -41,7 +52,7 @@ class AuthenticationViewController: UIViewController {
         return numPadView
     }()
     
-    fileprivate lazy var deleteButton: UIButton! = {
+    fileprivate lazy var deleteButton: UIButton = {
         let deleteButton = UIButton(type: .system)
         
         deleteButton.setTitle(NSLocalizedString("Delete", bundle: Bundle(for: type(of: self)), comment: "Delete"), for: UIControlState())
@@ -81,7 +92,7 @@ class AuthenticationViewController: UIViewController {
         
         let canvasView = UIView()
         view.addSubview(canvasView)
-        canvasView.snp.makeConstraints { (make) in
+        canvasView.snp.makeConstraints { make in
             make.top.equalTo(topLayoutGuide.snp.bottom)
             make.left.equalTo(view)
             make.right.equalTo(view)
@@ -109,9 +120,15 @@ class AuthenticationViewController: UIViewController {
                 make.centerX.equalTo(containerView)
             }
             
+            containerView.addSubview(errorPromptLabel)
+            errorPromptLabel.snp.makeConstraints { make in
+                make.top.equalTo(inputCirclesView.snp.bottom).offset(10)
+                make.centerX.equalToSuperview()
+            }
+            
             containerView.addSubview(numPadView)
             numPadView.snp.makeConstraints { make in
-                make.top.equalTo(inputCirclesView.snp.bottom).offset(20)
+                make.top.equalTo(errorPromptLabel.snp.bottom).offset(10)
                 make.left.equalTo(containerView)
                 make.right.equalTo(containerView)
             }
@@ -189,6 +206,7 @@ extension AuthenticationViewController: NumPadViewDelegate {
                             self.inputtedPasscode = ""
                             self.inputCirclesView.unfillAllCircles()
                             self.inputCirclesView.shake(needsVibration: true, completion: nil)
+                            self.errorPromptLabel.text = String.localizedStringWithFormat(NSLocalizedString("Wrong passcode. You can retry %ld more times", bundle: Bundle(for: type(of: self)), comment: "Wrong passcode. You can retry %ld more times"), FreezeManager.chancesRemained)
                         }
                     }
                 } else {

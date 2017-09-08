@@ -11,7 +11,14 @@ import SwiftDate
 
 class FreezeManager {
     fileprivate static var currentEndTimeStamp: Date?
-    fileprivate(set) static var currentPasscodeFailures = 0
+    
+    private static let currentPasscodeFailuresKey = "currentPasscodeFailuresKey"
+    fileprivate(set) static var currentPasscodeFailures =  UserDefaults.standard.integer(forKey: FreezeManager.currentPasscodeFailuresKey) {
+        didSet {
+            UserDefaults.standard.set(currentPasscodeFailures, forKey: FreezeManager.currentPasscodeFailuresKey)
+            UserDefaults.standard.synchronize()
+        }
+    }
     
     // MARK: - Freeze
     static func clearState() {
@@ -40,6 +47,10 @@ class FreezeManager {
         let now = Date()
         
         return now < (currentEndTimeStamp ?? Date(timeIntervalSince1970: 0))
+    }
+    
+    static var chancesRemained: Int {
+        return maxPasscodeFailures - currentPasscodeFailures
     }
     
         /// Measured in minutes

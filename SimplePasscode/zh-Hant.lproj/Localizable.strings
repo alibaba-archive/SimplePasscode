@@ -49,3 +49,5 @@
 /* Verify your identity to continue */
 "Verify your identity to continue" = "請確認你的身份";
 
+/* Wrong passcode. You can retry %ld more times */
+"Wrong passcode. You can retry %ld more times" = "密碼錯誤，還可以再輸 %ld 次";
