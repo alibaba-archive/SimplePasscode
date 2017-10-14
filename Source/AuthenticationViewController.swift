@@ -152,7 +152,7 @@ class AuthenticationViewController: UIViewController {
     }
     
     // MARK: - Action Handlers
-    func deleteButtonTapped() {
+    @objc func deleteButtonTapped() {
         if inputtedPasscode.characters.count > 0 {
             inputtedPasscode.remove(at: inputtedPasscode.characters.index(before: inputtedPasscode.endIndex))
             inputCirclesView.setFilled(false, atIndex: inputtedPasscode.characters.count)

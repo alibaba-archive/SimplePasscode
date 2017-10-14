@@ -194,7 +194,7 @@ class PasscodeInputView: UIView {
     }
     
     // MARK: - Action Handlers
-    func passcodeFieldEditingChanged(_ sender: AnyObject) {
+    @objc func passcodeFieldEditingChanged(_ sender: AnyObject) {
         if passcodeField.passcode.characters.count == passcodeField.passcodeLength {
             delegate?.passcodeInputView(self, didFinishWithPasscode: passcodeField.passcode)
         }

@@ -97,14 +97,14 @@ class PasscodeDeletionViewController: UIViewController {
     }
     
     // MARK: - Action Handlers
-    func cancelButtonTapped() {
+    @objc func cancelButtonTapped() {
         completionHandler?(false)
         
         dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Notification Handlers
-    func keyboardWillChange(_ notification: Notification) {
+    @objc func keyboardWillChange(_ notification: Notification) {
         guard let userInfo = (notification as NSNotification).userInfo else {
             return
         }
@@ -140,7 +140,7 @@ class PasscodeDeletionViewController: UIViewController {
             }, completion: nil)
     }
     
-    func appDidEnterBackground(_ notification: Notification) {
+    @objc func appDidEnterBackground(_ notification: Notification) {
         cancelButtonTapped()
     }
 }

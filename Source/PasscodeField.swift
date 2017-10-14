@@ -33,7 +33,7 @@ class PasscodeField: UIControl {
         
         set {
             if (newValue.characters.count > passcodeLength) {
-                _passcode = newValue.substring(to: newValue.characters.index(newValue.startIndex, offsetBy: passcodeLength))
+                _passcode = String(newValue[..<newValue.index(newValue.startIndex, offsetBy: passcodeLength)])
             } else {
                 _passcode = newValue
             }
@@ -88,7 +88,7 @@ class PasscodeField: UIControl {
     }
     
     // MARK: - Action Handlers
-    func didTouchUpInside(_ sender: AnyObject) {
+    @objc func didTouchUpInside(_ sender: AnyObject) {
         becomeFirstResponder()
     }
     
@@ -153,8 +153,8 @@ extension PasscodeField: UIKeyInput {
         guard delegate?.passcodeField(self, shouldDeleteBackwardText: _passcode) ?? true else {
             return
         }
-        
-        passcode = _passcode.substring(to: _passcode.characters.index(before: _passcode.endIndex))
+      
+        passcode = String(_passcode[..<_passcode.index(before: _passcode.endIndex)])
         
         sendActions(for: .editingChanged)
     }
