@@ -153,9 +153,9 @@ class AuthenticationViewController: UIViewController {
     
     // MARK: - Action Handlers
     @objc func deleteButtonTapped() {
-        if inputtedPasscode.characters.count > 0 {
-            inputtedPasscode.remove(at: inputtedPasscode.characters.index(before: inputtedPasscode.endIndex))
-            inputCirclesView.setFilled(false, atIndex: inputtedPasscode.characters.count)
+        if inputtedPasscode.count > 0 {
+            inputtedPasscode.remove(at: inputtedPasscode.index(before: inputtedPasscode.endIndex))
+            inputCirclesView.setFilled(false, atIndex: inputtedPasscode.count)
         }
     }
     
@@ -187,14 +187,14 @@ class AuthenticationViewController: UIViewController {
 
 extension AuthenticationViewController: NumPadViewDelegate {
     func numPadView(_ view: NumPadView, didTapDigit digit: Int) {
-        guard inputtedPasscode.characters.count < currentPasscode.characters.count else {
+        guard inputtedPasscode.count < currentPasscode.count else {
             return
         }
         
         inputtedPasscode += "\(digit)"
-        inputCirclesView.setFilled(true, atIndex: inputtedPasscode.characters.count - 1)
+        inputCirclesView.setFilled(true, atIndex: inputtedPasscode.count - 1)
         
-        if inputtedPasscode.characters.count == currentPasscode.characters.count {
+        if inputtedPasscode.count == currentPasscode.count {
             deleteButton.isEnabled = false
             
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(0.3 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) {

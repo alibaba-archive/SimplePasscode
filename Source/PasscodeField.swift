@@ -32,7 +32,7 @@ class PasscodeField: UIControl {
         }
         
         set {
-            if (newValue.characters.count > passcodeLength) {
+            if (newValue.count > passcodeLength) {
                 _passcode = String(newValue[..<newValue.index(newValue.startIndex, offsetBy: passcodeLength)])
             } else {
                 _passcode = newValue
@@ -104,7 +104,7 @@ class PasscodeField: UIControl {
         context.setFillColor(symbolColor.cgColor)
         
         for i in 0..<passcodeLength {
-            if i < _passcode.characters.count {
+            if i < _passcode.count {
                 // Draw circle
                 let circleFrame = CGRect(x: currentPoint.x, y: currentPoint.y, width: dotSize.width, height: dotSize.height)
                 context.fillEllipse(in: circleFrame)
@@ -122,17 +122,17 @@ class PasscodeField: UIControl {
 // MARK: - UIKeyInput
 extension PasscodeField: UIKeyInput {
     var hasText : Bool {
-        return _passcode.characters.count > 0
+        return _passcode.count > 0
     }
     
     func insertText(_ text: String) {
-        let filteredtext = nonDigitRegex.stringByReplacingMatches(in: text, options: [], range: NSRange(location: 0, length: text.characters.count), withTemplate: "")
+        let filteredtext = nonDigitRegex.stringByReplacingMatches(in: text, options: [], range: NSRange(location: 0, length: text.count), withTemplate: "")
         
-        guard isEnabled && filteredtext.characters.count > 0 else {
+        guard isEnabled && filteredtext.count > 0 else {
             return
         }
 
-        guard _passcode.characters.count + filteredtext.characters.count <= passcodeLength else {
+        guard _passcode.count + filteredtext.count <= passcodeLength else {
             return
         }
         
@@ -146,7 +146,7 @@ extension PasscodeField: UIKeyInput {
     }
     
     func deleteBackward() {
-        guard isEnabled && _passcode.characters.count > 0 else {
+        guard isEnabled && _passcode.count > 0 else {
             return
         }
         
