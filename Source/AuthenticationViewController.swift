@@ -55,7 +55,7 @@ class AuthenticationViewController: UIViewController {
     fileprivate lazy var deleteButton: UIButton = {
         let deleteButton = UIButton(type: .system)
         
-        deleteButton.setTitle(NSLocalizedString("Delete", bundle: Bundle(for: type(of: self)), comment: "Delete"), for: UIControlState())
+        deleteButton.setTitle(NSLocalizedString("Delete", bundle: Bundle(for: type(of: self)), comment: "Delete"), for: UIControl.State())
         deleteButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         deleteButton.addTarget(self, action: #selector(self.deleteButtonTapped), for: .touchUpInside)
         

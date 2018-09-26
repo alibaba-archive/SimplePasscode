@@ -64,9 +64,9 @@ class PasscodeCreationViewController: UIViewController {
     
     // MARK: - Register Notification Observers
     fileprivate func registerNotificationObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChange(_:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChange(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.appDidEnterBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.appDidEnterBackground(_:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
     
     // MARK: - UI Config
@@ -123,7 +123,7 @@ class PasscodeCreationViewController: UIViewController {
             return
         }
         
-        guard let keyboardFrameInScreen = (userInfo[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue else {
+        guard let keyboardFrameInScreen = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue else {
             return
         }
         
@@ -134,15 +134,15 @@ class PasscodeCreationViewController: UIViewController {
         let keyboardFrameInView = view.convert(keyboardFrameInWindow, from: nil)
         let bottomOffset = max(view.bounds.height - keyboardFrameInView.origin.y, 0)
         
-        guard let animationDuration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue else {
+        guard let animationDuration = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue else {
             return
         }
         
-        guard let animationCurve = (userInfo[UIKeyboardAnimationCurveUserInfoKey] as AnyObject).uintValue else {
+        guard let animationCurve = (userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as AnyObject).uintValue else {
             return
         }
         
-        UIView.animate(withDuration: animationDuration, delay: 0, options: UIViewAnimationOptions(rawValue: animationCurve << 16), animations: {
+        UIView.animate(withDuration: animationDuration, delay: 0, options: UIView.AnimationOptions(rawValue: animationCurve << 16), animations: {
             self.shiftView.snp.remakeConstraints { make in
                 make.top.equalTo(self.topLayoutGuide.snp.bottom)
                 make.left.equalTo(self.view)

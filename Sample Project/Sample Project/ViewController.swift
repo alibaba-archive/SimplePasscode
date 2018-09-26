@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        xButton.setTitle(NSLocalizedString("God", comment: "God"), for: UIControlState())
+        xButton.setTitle(NSLocalizedString("God", comment: "God"), for: UIControl.State())
     }
 
     @IBAction func buttonTapped(_ sender: AnyObject) {

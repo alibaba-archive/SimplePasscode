@@ -13,7 +13,7 @@ open class LockScreenManager {
     fileprivate static var mainWindow: UIWindow?
     fileprivate static var lockWindow: UIWindow?
     
-    open static func showLockScreen(passcode: String, completion: @escaping (_ authenticationSuccess: Bool) -> Void) {
+    public static func showLockScreen(passcode: String, completion: @escaping (_ authenticationSuccess: Bool) -> Void) {
         guard !isShowingLockScreen else {
             return
         }
@@ -39,7 +39,7 @@ open class LockScreenManager {
         }) 
     }
     
-    open static func hideLockScreen() {
+    public static func hideLockScreen() {
         guard isShowingLockScreen else {
             return
         }

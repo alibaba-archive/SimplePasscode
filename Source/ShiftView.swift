@@ -78,7 +78,7 @@ class ShiftView<T: UIView>: UIView {
                 let currentIndex = managedSubViews.index(of: currentView)!
                 let nextView = managedSubViews[(currentIndex + 1)]
                 
-                UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions(), animations: { 
+                UIView.animate(withDuration: 0.5, delay: 0, options: UIView.AnimationOptions(), animations: { 
                     self.currentView.snp.remakeConstraints { make in
                         make.top.equalTo(nextView)
                         make.bottom.equalTo(nextView)
@@ -102,7 +102,7 @@ class ShiftView<T: UIView>: UIView {
                 let currentIndex = managedSubViews.index(of: currentView)!
                 let previousView = managedSubViews[(currentIndex - 1)]
                 
-                UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions(), animations: { 
+                UIView.animate(withDuration: 0.5, delay: 0, options: UIView.AnimationOptions(), animations: { 
                     self.currentView.snp.remakeConstraints { make in
                         make.top.equalTo(previousView)
                         make.bottom.equalTo(previousView)
