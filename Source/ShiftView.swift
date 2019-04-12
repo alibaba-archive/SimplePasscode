@@ -67,7 +67,7 @@ class ShiftView<T: UIView>: UIView {
     
     // MARK: - Public Properties
     var currentIndex: Array<T>.Index {
-        return managedSubViews.index(of: currentView)!
+        return managedSubViews.firstIndex(of: currentView)!
     }
     
     // MARK: - Shift Function
@@ -75,7 +75,7 @@ class ShiftView<T: UIView>: UIView {
         switch direction {
         case .forward:
             if currentView != managedSubViews.last {
-                let currentIndex = managedSubViews.index(of: currentView)!
+                let currentIndex = managedSubViews.firstIndex(of: currentView)!
                 let nextView = managedSubViews[(currentIndex + 1)]
                 
                 UIView.animate(withDuration: 0.5, delay: 0, options: UIView.AnimationOptions(), animations: { 
@@ -99,7 +99,7 @@ class ShiftView<T: UIView>: UIView {
                 }
         case .backward:
             if currentView != managedSubViews.first {
-                let currentIndex = managedSubViews.index(of: currentView)!
+                let currentIndex = managedSubViews.firstIndex(of: currentView)!
                 let previousView = managedSubViews[(currentIndex - 1)]
                 
                 UIView.animate(withDuration: 0.5, delay: 0, options: UIView.AnimationOptions(), animations: { 
